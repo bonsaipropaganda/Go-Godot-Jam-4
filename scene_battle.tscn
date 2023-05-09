@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c64f21jh4f5t4"]
+[gd_scene load_steps=8 format=3 uid="uid://c64f21jh4f5t4"]
 
 [ext_resource type="Texture2D" uid="uid://bptu8u0pvmg8e" path="res://battleBackgroundPH.png" id="1_tb2gi"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
+[ext_resource type="PackedScene" uid="uid://c6m6tf1ym4ex8" path="res://simple_enemy.tscn" id="3_sllpb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xai1"]
 animations = [{
@@ -14,9 +15,43 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6q0lg"]
-radius = 19.0
-height = 46.0
+[sub_resource type="Animation" id="Animation_2lw86"]
+resource_name = "run away"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(58, 0), Vector2(1, -65), Vector2(-95, 0), Vector2(-1, 68)]
+}
+
+[sub_resource type="Animation" id="Animation_fmgw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(58, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36ih4"]
+_data = {
+"RESET": SubResource("Animation_fmgw5"),
+"run away": SubResource("Animation_2lw86")
+}
 
 [node name="Scene_Battle" type="Node2D"]
 
@@ -26,11 +61,17 @@ zoom = Vector2(4, 4)
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_tb2gi")
 
-[node name="Brain" type="Area2D" parent="."]
+[node name="Brain" type="AnimatableBody2D" parent="."]
+position = Vector2(58, 0)
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Brain"]
 sprite_frames = SubResource("SpriteFrames_8xai1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_6q0lg")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Brain"]
+libraries = {
+"": SubResource("AnimationLibrary_36ih4")
+}
+
+[node name="SimpleEnemy" parent="." instance=ExtResource("3_sllpb")]
+position = Vector2(-93, -60)

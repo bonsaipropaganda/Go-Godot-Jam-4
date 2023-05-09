@@ -1,3 +1,8 @@
 res://scene_overworld.tscn
 res://TheGame.tscn
 res://scene_battle.tscn
+res://simple_enemy.tscn
+res://player.tscn
+res://Player.gd
+res://simple_enemy.gd
+res://Brain.gd
