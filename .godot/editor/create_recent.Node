@@ -1,4 +1,9 @@
-Node
-Sprite2D
 CollisionShape2D
+AnimatedSprite2D
+Area2D
+Camera2D
+Sprite2D
+ColorRect
+AnimatableBody2D
+Node
 CharacterBody2D

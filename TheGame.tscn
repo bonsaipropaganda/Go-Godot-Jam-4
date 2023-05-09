@@ -8,6 +8,7 @@
 [node name="The Game" type="Node"]
 
 [node name="Scene_Overworld" parent="." instance=ExtResource("1_8u385")]
+visible = false
 
 [node name="Scene_Battle" parent="." instance=ExtResource("2_apitx")]
 
