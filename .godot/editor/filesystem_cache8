@@ -1,5 +1,5 @@
 2a60927148abd1d33b818b535e306557
-::res://::1683695309
+::res://::1683695391
 ::res://Art/::1683695284
 8BitDeckAssets.png::CompressedTexture2D::8878188931660970315::1683694235::1683695284::1::::<><>::
 battleBackgroundPH.png::CompressedTexture2D::3479750876442100814::1683651235::1683695284::1::::<><>::
@@ -78,17 +78,18 @@ players red x3.png::CompressedTexture2D::4158337852207877985::1683644320::168369
 ui x1.png::CompressedTexture2D::8991413125983561972::1683644320::1683695262::1::::<><>::
 ui x2.png::CompressedTexture2D::5015030934528655576::1683644320::1683695262::1::::<><>::
 ui x3.png::CompressedTexture2D::3900645523442053233::1683644320::1683695263::1::::<><>::
-::res://Scenes/::1683695322
-card.tscn::PackedScene::-1::1683695300::0::1::::<><>::res://Sound/card.gd<>uid://dyqwqevc1rn04
-player.tscn::PackedScene::-1::1683695300::0::1::::<><>::res://Sound/Player.gd<>uid://c3rtpgxj4rxjc
+::res://Scenes/::1683695541
+card.tscn::PackedScene::-1::1683695391::0::1::::<><>::res://Scripts/card.gd<>uid://dyqwqevc1rn04
+dialog.tscn::PackedScene::7599862546196810396::1683695527::0::1::::<><>::
+player.tscn::PackedScene::-1::1683695391::0::1::::<><>::res://Scripts/Player.gd<>uid://c3rtpgxj4rxjc
 player_deck.tscn::PackedScene::-1::1683695309::0::1::::<><>::res://Scenes/card.tscn
-scene_battle.tscn::PackedScene::-1::1683695309::0::1::::<><>::res://Sound/scene_battle.gd<>uid://dcyib66twf1av<>res://Sound/Brain.gd<>res://Scenes/simple_enemy.tscn<>res://Sound/BrainCollision.gd<>uid://dft3dognr243p<>res://Scenes/card.tscn
+scene_battle.tscn::PackedScene::-1::1683695391::0::1::::<><>::res://Scripts/scene_battle.gd<>uid://dcyib66twf1av<>res://Scripts/Brain.gd<>res://Scenes/simple_enemy.tscn<>res://Scripts/BrainCollision.gd<>uid://dft3dognr243p<>res://Scenes/card.tscn
 scene_overworld.tscn::PackedScene::-1::1683695309::0::1::::<><>::uid://bu734qg4eo78b<>res://Scenes/player.tscn
 scene_victory.tscn::PackedScene::4629557058316167179::1683647276::0::1::::<><>::
-simple_enemy.tscn::PackedScene::-1::1683695301::0::1::::<><>::res://Sound/simple_enemy.gd<>uid://bfu06vfrhcf2v<>res://Sound/HealthBar.gd
+simple_enemy.tscn::PackedScene::-1::1683695391::0::1::::<><>::res://Scripts/simple_enemy.gd<>uid://bfu06vfrhcf2v<>res://Scripts/HealthBar.gd
 TheGame.tscn::PackedScene::3549761705891810497::1683695322::0::1::::<><>::res://Scenes/scene_overworld.tscn<>res://Scenes/scene_battle.tscn<>uid://b67uemnhb4o64<>res://Scenes/player_deck.tscn
-::res://Scripts/::1683695234
-::res://Sound/::1683695300
+::res://Scenes/dialog/::1683695541
+::res://Scripts/::1683695391
 Brain.gd::GDScript::-1::1683694235::0::1::::<>StaticBody2D<>::
 BrainCollision.gd::GDScript::-1::1683694235::0::1::::<>Area2D<>::
 card.gd::GDScript::-1::1683694235::0::1::::<>Area2D<>::
@@ -97,3 +98,4 @@ HealthBar.gd::GDScript::-1::1683694235::0::1::::<>ColorRect<>::
 Player.gd::GDScript::-1::1683694235::0::1::::<>CharacterBody2D<>::
 scene_battle.gd::GDScript::-1::1683694235::0::1::::<>Node2D<>::
 simple_enemy.gd::GDScript::-1::1683694235::0::1::::<>Area2D<>::
+::res://Sound/::1683695391
