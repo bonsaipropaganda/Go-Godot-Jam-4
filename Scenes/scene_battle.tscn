@@ -1,13 +1,53 @@
-[gd_scene load_steps=15 format=3 uid="uid://cj4f0gvwxbwq6"]
+[gd_scene load_steps=21 format=3 uid="uid://cj4f0gvwxbwq6"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
+[ext_resource type="PackedScene" uid="uid://c5lkh2jiblpud" path="res://Scenes/anger_enemy.tscn" id="2_lcvla"]
 [ext_resource type="PackedScene" uid="uid://d34d7la0sj61k" path="res://Scenes/fear_enemy.tscn" id="2_q6vyy"]
 [ext_resource type="Script" path="res://Scripts/Brain.gd" id="2_waonk"]
-[ext_resource type="PackedScene" uid="uid://civmrmcen13cp" path="res://Scenes/simple_enemy.tscn" id="3_sllpb"]
 [ext_resource type="Script" path="res://Scripts/BrainCollision.gd" id="5_cq4gu"]
 [ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="6_eko2p"]
 [ext_resource type="PackedScene" path="res://Scenes/card.tscn" id="7_0gu3s"]
+[ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="7_y2qjd"]
+[ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="9_l803j"]
+
+[sub_resource type="Animation" id="Animation_fbc4v"]
+resource_name = "Flashing Background"
+length = 0.71
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0htjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oine5"]
+_data = {
+"Flashing Background": SubResource("Animation_fbc4v"),
+"RESET": SubResource("Animation_0htjr")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xai1"]
 animations = [{
@@ -38,6 +78,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(2.08165e-12, 2.08165e-12)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_2lw86"]
 resource_name = "run away"
@@ -56,9 +108,27 @@ tracks/0/keys = {
 "values": [Vector2(58, 0), Vector2(1, -65), Vector2(-95, 0), Vector2(-1, 68)]
 }
 
+[sub_resource type="Animation" id="Animation_gkxyt"]
+resource_name = "pulse"
+length = 0.71
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 0.000601146),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36ih4"]
 _data = {
 "RESET": SubResource("Animation_fmgw5"),
+"pulse": SubResource("Animation_gkxyt"),
 "run away": SubResource("Animation_2lw86")
 }
 
@@ -70,7 +140,7 @@ point_count = 9
 
 [node name="Scene_Battle" type="Node2D"]
 script = ExtResource("1_afmc2")
-anger_mob = ExtResource("3_sllpb")
+anger_mob = ExtResource("2_lcvla")
 fear_mob = ExtResource("2_q6vyy")
 anger_percent = 80
 fear_percent = 20
@@ -82,6 +152,12 @@ offset_right = 157.0
 offset_bottom = 91.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+
+[node name="FlashingBackground" type="AnimationPlayer" parent="Background"]
+autoplay = "Flashing Background"
+libraries = {
+"": SubResource("AnimationLibrary_oine5")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -97,11 +173,16 @@ sprite_frames = SubResource("SpriteFrames_8xai1")
 [node name="BrainCollision" type="Area2D" parent="Brain/AnimatedSprite2D"]
 script = ExtResource("5_cq4gu")
 
+[node name="BrainHit" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+stream = ExtResource("7_y2qjd")
+volume_db = -5.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4agu3")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Brain"]
+[node name="Pulsing Brain" type="AnimationPlayer" parent="Brain"]
+autoplay = "pulse"
 libraries = {
 "": SubResource("AnimationLibrary_36ih4")
 }
@@ -142,6 +223,10 @@ position = Vector2(-143, 23)
 
 [node name="Card4" parent="." instance=ExtResource("7_0gu3s")]
 position = Vector2(-143, 67)
+
+[node name="BattleTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_l803j")
+autoplay = true
 
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_area_entered"]

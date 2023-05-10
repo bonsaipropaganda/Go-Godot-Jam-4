@@ -9,26 +9,34 @@ extends Area2D
 
 @onready var brain = get_parent().get_node("Brain")
 
+@onready var swell_speed = 0.01
+
 var velocity = Vector2.ZERO
 var mouse_in = false
 var mouse_held = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
 	$HealthBar.size = Vector2(health_bar_size,health_height)
 	$HealthBar.position -= Vector2(health_bar_size/2,0)
 	$HealthBar/RemainingHealth.size = Vector2(health_bar_size,health_height)
-	
+	$AnimatedSprite2D/SwellEffect.pause()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	velocity = global_position.direction_to(brain.global_position)
 	position += velocity * delta * speed
-	if mouse_held:
+	if mouse_held and not $Death.playing:
 		$HealthBar/RemainingHealth.size = Vector2(health_bar_size * (health-health_loss_speed) / max_health,health_height)
 		health -= health_loss_speed
-		if health <= 0:
-			queue_free()
+		$Damage.play()
+		$AnimatedSprite2D/SwellEffect.advance(swell_speed)
+		if health <= 0 and not $Death.playing:
+			$Damage.stop()
+			$Death.play()
+			hide()
 
 func _input(event):
 	if mouse_in and event is InputEventMouseButton and event.is_pressed():
@@ -45,3 +53,7 @@ func _on_mouse_entered():
 
 func _on_mouse_exited():
 	mouse_in = false;
+
+
+func _on_death_finished():
+	queue_free()

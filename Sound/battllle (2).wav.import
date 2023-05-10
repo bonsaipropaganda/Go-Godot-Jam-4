@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bukulyrgdepc2"
+path="res://.godot/imported/battllle (2).wav-f39e0fb124bb691aa3202b4ef092efe9.sample"
+
+[deps]
+
+source_file="res://Sound/battllle (2).wav"
+dest_files=["res://.godot/imported/battllle (2).wav-f39e0fb124bb691aa3202b4ef092efe9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
