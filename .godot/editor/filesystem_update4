@@ -1,6 +1,0 @@
-res://Scenes/scene_battle.tscn
-res://Scenes/simple_enemy.tscn
-res://Scenes/fear_enemy.tscn
-res://Scripts/simple_enemy.gd
-res://Scenes/fear_enemy.gd
-res://Scripts/scene_battle.gd
