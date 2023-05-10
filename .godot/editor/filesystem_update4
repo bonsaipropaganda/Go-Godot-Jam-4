@@ -10,3 +10,6 @@ res://scene_battle.gd
 res://BrainCollision.gd
 res://global.gd
 res://HealthBar.gd
+res://player_deck.tscn
+res://card.tscn
+res://card.gd

@@ -1,11 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://c64f21jh4f5t4"]
+[gd_scene load_steps=14 format=3 uid="uid://c64f21jh4f5t4"]
 
 [ext_resource type="Script" path="res://scene_battle.gd" id="1_afmc2"]
-[ext_resource type="Texture2D" uid="uid://bptu8u0pvmg8e" path="res://battleBackgroundPH.png" id="1_tb2gi"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
 [ext_resource type="Script" path="res://Brain.gd" id="2_waonk"]
 [ext_resource type="PackedScene" uid="uid://c6m6tf1ym4ex8" path="res://simple_enemy.tscn" id="3_sllpb"]
 [ext_resource type="Script" path="res://BrainCollision.gd" id="5_cq4gu"]
+[ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://foreground.png" id="6_eko2p"]
+[ext_resource type="PackedScene" uid="uid://ixv4ue2e0gu6" path="res://card.tscn" id="7_0gu3s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xai1"]
 animations = [{
@@ -60,9 +61,9 @@ _data = {
 "run away": SubResource("Animation_2lw86")
 }
 
-[sub_resource type="Curve2D" id="Curve2D_r7mxr"]
+[sub_resource type="Curve2D" id="Curve2D_4neny"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -127, -9, 0, 0, 0, 0, -90, -89, 0, 0, 0, 0, 92, -89, 0, 0, 0, 0, 128, -10, 0, 0, 0, 0, 128, 12, 0, 0, 0, 0, 90, 91, 0, 0, 0, 0, -89, 92, 0, 0, 0, 0, -127, 5, 0, 0, 0, 0, -127, -9)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -135, 0, 0, 0, 0, 129, -88, 0, 0, 0, 0, 144, 0, 0, 0, 0, 0, 129, 89, 0, 0, 0, 0, 1, 128, 0, 0, 0, 0, -126, 90, 0, 0, 0, 0, -142, 1, 0, 0, 0, 0, -126, -87, 0, 0, 0, 0, 0, -135)
 }
 point_count = 9
 
@@ -70,11 +71,15 @@ point_count = 9
 script = ExtResource("1_afmc2")
 mob_scene = ExtResource("3_sllpb")
 
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 157.0
+offset_bottom = 91.0
+color = Color(0, 0, 0, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("1_tb2gi")
 
 [node name="Brain" type="AnimatableBody2D" parent="."]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -97,16 +102,42 @@ libraries = {
 "": SubResource("AnimationLibrary_36ih4")
 }
 
-[node name="mob_spawn_timer" type="Timer" parent="."]
-
 [node name="MobPath" type="Path2D" parent="."]
-position = Vector2(2.33724, -2.85636)
-scale = Vector2(1.32549, 1.23757)
-curve = SubResource("Curve2D_r7mxr")
+curve = SubResource("Curve2D_4neny")
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2(-127, -9)
-rotation = -1.1376
+position = Vector2(0, -135)
+rotation = 0.349393
+
+[node name="mob_spawn_timer" type="Timer" parent="."]
+
+[node name="Foreground" type="Sprite2D" parent="."]
+z_index = 15
+texture = ExtResource("6_eko2p")
+
+[node name="Card5" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(144, -22)
+
+[node name="Card6" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(144, -67)
+
+[node name="Card7" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(144, 23)
+
+[node name="Card8" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(144, 67)
+
+[node name="Card2" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(-143, -22)
+
+[node name="Card" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(-143, -67)
+
+[node name="Card3" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(-143, 23)
+
+[node name="Card4" parent="." instance=ExtResource("7_0gu3s")]
+position = Vector2(-143, 67)
 
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_area_entered"]
