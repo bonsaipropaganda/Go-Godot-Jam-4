@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Less is More"
-run/main_scene="res://scene_battle.tscn"
+run/main_scene="res://Scenes/scene_battle.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://Art/icon.svg"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://Scripts/global.gd"
 
 [display]
 
@@ -55,6 +55,6 @@ interact={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/canvas_textures/default_texture_filter=0

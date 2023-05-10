@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqtsb6rlkrddh"]
+
+[ext_resource type="PackedScene" path="res://Scenes/scene_overworld.tscn" id="1_0deoa"]
+[ext_resource type="PackedScene" path="res://Scenes/scene_battle.tscn" id="2_mrjvd"]
+[ext_resource type="PackedScene" uid="uid://b67uemnhb4o64" path="res://Scenes/scene_victory.tscn" id="3_sd5l7"]
+[ext_resource type="PackedScene" path="res://Scenes/player_deck.tscn" id="4_wcept"]
+
+[node name="The Game" type="Node"]
+
+[node name="Scene_Overworld" parent="." instance=ExtResource("1_0deoa")]
+visible = false
+
+[node name="Scene_Battle" parent="." instance=ExtResource("2_mrjvd")]
+
+[node name="Scene_Victory" parent="." instance=ExtResource("3_sd5l7")]
+
+[node name="Player_Deck" parent="." instance=ExtResource("4_wcept")]

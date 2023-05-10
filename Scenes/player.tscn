@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_4syyv"]
+[ext_resource type="Texture2D" uid="uid://c3rtpgxj4rxjc" path="res://Art/Tech Dungeon Roguelite - Asset Pack (DEMO)/Players/players blue x1.png" id="2_7paon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dbef"]
+size = Vector2(10, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epotc"]
+atlas = ExtResource("2_7paon")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_drj8l"]
+atlas = ExtResource("2_7paon")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a2j6"]
+atlas = ExtResource("2_7paon")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8c2x"]
+atlas = ExtResource("2_7paon")
+region = Rect2(64, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmxut"]
+atlas = ExtResource("2_7paon")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jf1pb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epotc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_drj8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a2j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8c2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmxut")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4syyv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_2dbef")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jf1pb")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
