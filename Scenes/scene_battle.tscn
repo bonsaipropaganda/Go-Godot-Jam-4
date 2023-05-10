@@ -102,7 +102,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4agu3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Brain"]
-autoplay = "run away"
 libraries = {
 "": SubResource("AnimationLibrary_36ih4")
 }

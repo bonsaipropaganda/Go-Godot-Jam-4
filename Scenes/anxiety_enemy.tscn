@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://b0pwtrvq161p4"]
+
+[ext_resource type="Script" path="res://Scenes/anxiety_enemy.gd" id="1_c8gbe"]
+[ext_resource type="Texture2D" uid="uid://bfu06vfrhcf2v" path="res://Art/mindefense1.png" id="2_dvj3h"]
+[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_a0kkf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nr0jc"]
+atlas = ExtResource("2_dvj3h")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_og5fk"]
+atlas = ExtResource("2_dvj3h")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hja8f"]
+atlas = ExtResource("2_dvj3h")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p840r"]
+atlas = ExtResource("2_dvj3h")
+region = Rect2(80, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u6m1n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nr0jc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_og5fk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hja8f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p840r")
+}],
+"loop": true,
+"name": &"flying",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vh72f"]
+radius = 9.05539
+
+[node name="anxiety_enemy" type="Area2D" groups=["enemy"]]
+z_index = 10
+collision_mask = 0
+script = ExtResource("1_c8gbe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u6m1n")
+animation = &"flying"
+frame = 3
+frame_progress = 0.0184167
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["enemy"]]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_vh72f")
+
+[node name="HealthBar" type="ColorRect" parent="."]
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = -10.0
+size_flags_horizontal = 4
+color = Color(1, 0, 0, 1)
+script = ExtResource("3_a0kkf")
+metadata/_edit_group_ = true
+
+[node name="RemainingHealth" type="ColorRect" parent="HealthBar"]
+layout_mode = 0
+offset_right = 20.0
+offset_bottom = 2.0
+color = Color(0, 1, 0, 1)
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
