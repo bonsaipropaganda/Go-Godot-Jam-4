@@ -1,5 +1,8 @@
 extends Node2D
-@export var mob_scene: PackedScene
+@export var anger_mob: PackedScene
+@export var fear_mob: PackedScene
+@export var anger_percent: int
+@export var fear_percent: int
 
 @onready var brain = get_node("Brain")
 
@@ -16,8 +19,12 @@ func _process(_delta):
 
 func _on_mob_spawn_timer_timeout():
 	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
-
+	var mob = PackedScene
+	if (randi() % 100 + 1) <= anger_percent:
+		mob = anger_mob.instantiate()
+	else:
+		mob = fear_mob.instantiate()
+		
 	# Choose a random location on Path2D.
 	var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
 	mob_spawn_location.progress_ratio = randf()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3]
+[gd_scene load_steps=15 format=3 uid="uid://cj4f0gvwxbwq6"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
+[ext_resource type="PackedScene" uid="uid://d34d7la0sj61k" path="res://Scenes/fear_enemy.tscn" id="2_q6vyy"]
 [ext_resource type="Script" path="res://Scripts/Brain.gd" id="2_waonk"]
-[ext_resource type="PackedScene" path="res://Scenes/simple_enemy.tscn" id="3_sllpb"]
+[ext_resource type="PackedScene" uid="uid://civmrmcen13cp" path="res://Scenes/simple_enemy.tscn" id="3_sllpb"]
 [ext_resource type="Script" path="res://Scripts/BrainCollision.gd" id="5_cq4gu"]
 [ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="6_eko2p"]
 [ext_resource type="PackedScene" path="res://Scenes/card.tscn" id="7_0gu3s"]
@@ -23,6 +24,21 @@ animations = [{
 radius = 11.0
 height = 28.0
 
+[sub_resource type="Animation" id="Animation_fmgw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+
 [sub_resource type="Animation" id="Animation_2lw86"]
 resource_name = "run away"
 length = 8.0
@@ -40,21 +56,6 @@ tracks/0/keys = {
 "values": [Vector2(58, 0), Vector2(1, -65), Vector2(-95, 0), Vector2(-1, 68)]
 }
 
-[sub_resource type="Animation" id="Animation_fmgw5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(2.08165e-12, 2.08165e-12)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36ih4"]
 _data = {
 "RESET": SubResource("Animation_fmgw5"),
@@ -69,13 +70,17 @@ point_count = 9
 
 [node name="Scene_Battle" type="Node2D"]
 script = ExtResource("1_afmc2")
-mob_scene = ExtResource("3_sllpb")
+anger_mob = ExtResource("3_sllpb")
+fear_mob = ExtResource("2_q6vyy")
+anger_percent = 80
+fear_percent = 20
 
 [node name="Background" type="ColorRect" parent="."]
 offset_left = -160.0
 offset_top = -90.0
 offset_right = 157.0
 offset_bottom = 91.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
