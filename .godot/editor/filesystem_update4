@@ -6,3 +6,7 @@ res://player.tscn
 res://Player.gd
 res://simple_enemy.gd
 res://Brain.gd
+res://scene_battle.gd
+res://BrainCollision.gd
+res://global.gd
+res://HealthBar.gd

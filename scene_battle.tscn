@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c64f21jh4f5t4"]
+[gd_scene load_steps=13 format=3 uid="uid://c64f21jh4f5t4"]
 
+[ext_resource type="Script" path="res://scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://bptu8u0pvmg8e" path="res://battleBackgroundPH.png" id="1_tb2gi"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
+[ext_resource type="Script" path="res://Brain.gd" id="2_waonk"]
 [ext_resource type="PackedScene" uid="uid://c6m6tf1ym4ex8" path="res://simple_enemy.tscn" id="3_sllpb"]
+[ext_resource type="Script" path="res://BrainCollision.gd" id="5_cq4gu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8xai1"]
 animations = [{
@@ -14,6 +17,10 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4agu3"]
+radius = 11.0
+height = 28.0
 
 [sub_resource type="Animation" id="Animation_2lw86"]
 resource_name = "run away"
@@ -44,7 +51,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(58, 0)]
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_36ih4"]
@@ -53,7 +60,15 @@ _data = {
 "run away": SubResource("Animation_2lw86")
 }
 
+[sub_resource type="Curve2D" id="Curve2D_r7mxr"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -127, -9, 0, 0, 0, 0, -90, -89, 0, 0, 0, 0, 92, -89, 0, 0, 0, 0, 128, -10, 0, 0, 0, 0, 128, 12, 0, 0, 0, 0, 90, 91, 0, 0, 0, 0, -89, 92, 0, 0, 0, 0, -127, 5, 0, 0, 0, 0, -127, -9)
+}
+point_count = 9
+
 [node name="Scene_Battle" type="Node2D"]
+script = ExtResource("1_afmc2")
+mob_scene = ExtResource("3_sllpb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -62,16 +77,39 @@ zoom = Vector2(4, 4)
 texture = ExtResource("1_tb2gi")
 
 [node name="Brain" type="AnimatableBody2D" parent="."]
-position = Vector2(58, 0)
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("2_waonk")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Brain"]
 sprite_frames = SubResource("SpriteFrames_8xai1")
 
+[node name="BrainCollision" type="Area2D" parent="Brain/AnimatedSprite2D"]
+script = ExtResource("5_cq4gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4agu3")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Brain"]
+autoplay = "run away"
 libraries = {
 "": SubResource("AnimationLibrary_36ih4")
 }
 
-[node name="SimpleEnemy" parent="." instance=ExtResource("3_sllpb")]
-position = Vector2(-93, -60)
+[node name="mob_spawn_timer" type="Timer" parent="."]
+
+[node name="MobPath" type="Path2D" parent="."]
+position = Vector2(2.33724, -2.85636)
+scale = Vector2(1.32549, 1.23757)
+curve = SubResource("Curve2D_r7mxr")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-127, -9)
+rotation = -1.1376
+
+[connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_area_entered"]
+[connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_body_entered"]
+[connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
