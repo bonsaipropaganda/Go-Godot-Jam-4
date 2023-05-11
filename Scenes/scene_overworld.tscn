@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://ch3hfjnt3cri3"]
 
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild.png" id="1_to6oi"]
 [ext_resource type="PackedScene" path="res://Scenes/player.tscn" id="2_ivmms"]

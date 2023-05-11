@@ -27,7 +27,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(204, -0.25, 0, 0.25, 0, 208, -0.25, 0, 0.25, 0, 204, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(185, -0.25, 0, 0.25, 0, 185, -0.25, 0, 0.25, 0, 185, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.4, 1)
 }
 tracks/2/type = "bezier"
@@ -85,9 +85,9 @@ _data = {
 }
 
 [node name="DialogBox" type="ColorRect"]
-offset_top = 434.0
+offset_top = 470.0
 offset_right = 1278.0
-offset_bottom = 722.0
+offset_bottom = 720.0
 script = ExtResource("1_scwdk")
 dialog_array = ["example text AHHHHHHHHHHHHHHHHHHHHHHHHHHH", "Here's another example text poopy poopy ", "The function first checks if phraseNum (the current phrase index) is greater than or equal to the length of the dialog "]
 character_name = "Godot"
@@ -107,9 +107,9 @@ text = "Name goes here"
 [node name="Text" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 75.0
+offset_top = 76.0
 offset_right = 1169.0
-offset_bottom = 249.0
+offset_bottom = 250.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("3_4mx3n")
 theme_override_font_sizes/normal_font_size = 60
