@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3]
+[gd_scene load_steps=61 format=3 uid="uid://boufx20ggdd05"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_54rg8"]
 [ext_resource type="Texture2D" uid="uid://dyqwqevc1rn04" path="res://Art/8BitDeckAssets.png" id="1_ooto4"]

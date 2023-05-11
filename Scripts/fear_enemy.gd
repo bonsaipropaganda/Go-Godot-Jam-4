@@ -14,6 +14,7 @@ extends Area2D
 var velocity = Vector2.ZERO
 var mouse_in = false
 var mouse_held = false
+var dead = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -36,6 +37,7 @@ func _process(delta):
 		if health <= 0 and not $Death.playing:
 			$Damage.stop()
 			$Death.play()
+			dead = true
 			hide()
 
 func _input(event):

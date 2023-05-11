@@ -10,6 +10,7 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var mouse_in = false
+var dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.play()
@@ -32,6 +33,7 @@ func _input(event):
 		health -= Global.attackDamage
 		print(health)
 		if health <= 0:
+			dead = true
 			queue_free()
 			
 func _on_mouse_entered():

@@ -1,5 +1,5 @@
 extends Area2D
-@export var speed : int
+@export var start_speed : int
 @export var max_health : int
 @export var health_height : int
 
@@ -10,7 +10,11 @@ extends Area2D
 
 var velocity = Vector2.ZERO
 var mouse_in = false
-# Called when the node enters the scene tree for the first time.
+var dead = false
+
+#ADJUST SPEED ACCORDING TO CARD MULTIPLIER
+@onready var speed = start_speed * Global.more_speed
+
 func _ready():
 	$AnimatedSprite2D.play()
 	$HealthBar.size = Vector2(health_bar_size,health_height)
@@ -34,6 +38,7 @@ func _input(event):
 		if health <= 0:
 			$Damage.stop()
 			$Death.play()
+			dead = true
 			hide()
 			
 func _on_mouse_entered():

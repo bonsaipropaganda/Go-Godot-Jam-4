@@ -8,11 +8,16 @@ var version = null
 var paused = false
 var dead = false
 var show_debug_ui = false
-const SCENE_MAIN_MENU = "res://main_menu/main_menu.tscn"
-const EXPORT_CONFIG_FILE := "res://export.cfg"
-const EXPORT_CONFIG_METADATA_SECTION := "metadata"
-const SETTINGS_FILE := "user://settings.cfg"
-const CONFIG_SETTINGS_SECTION := "settings"
+var camera
+
+#GLOBAL CARD EFFECT VARIABLES
+var more_enemy = 1
+var more_health = 1
+var more_speed = 1
+var more_fear = 1
+var more_anger = 1
+var more_anxiety = 1
+
 
 func _ready() -> void:
 	pass
