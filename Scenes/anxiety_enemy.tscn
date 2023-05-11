@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0pwtrvq161p4"]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource type="Script" path="res://Scenes/anxiety_enemy.gd" id="1_c8gbe"]
+[ext_resource type="Script" path="res://Scripts/anxiety_enemy.gd" id="1_c8gbe"]
 [ext_resource type="Texture2D" uid="uid://bfu06vfrhcf2v" path="res://Art/mindefense1.png" id="2_dvj3h"]
 [ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_a0kkf"]
 
