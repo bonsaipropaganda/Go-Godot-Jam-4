@@ -1,9 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://qsx4utswcism"]
+[gd_scene load_steps=10 format=3 uid="uid://da6wtt163uf5f"]
 
 [ext_resource type="Texture2D" uid="uid://4tca42lxkf2i" path="res://Art/icon.svg" id="1_1cbjo"]
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_q1r7j"]
 [ext_resource type="PackedScene" uid="uid://cerbn63cfgjxo" path="res://Scenes/player_check.tscn" id="3_jj12n"]
-[ext_resource type="Script" path="res://Scenes/DialogIndicator.gd" id="3_jkg0m"]
+[ext_resource type="Script" path="res://Scripts/DialogIndicator.gd" id="3_qq5qd"]
+[ext_resource type="PackedScene" uid="uid://dgjovjn0cwivc" path="res://Scenes/dialog_box.tscn" id="5_3abvm"]
+
+[sub_resource type="Animation" id="Animation_dvc26"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-27, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_lg3xl"]
 resource_name = "floaty"
@@ -42,42 +79,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5, 1)
 }
 
-[sub_resource type="Animation" id="Animation_dvc26"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-1, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-27, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p5uc3"]
 _data = {
 "RESET": SubResource("Animation_dvc26"),
@@ -99,7 +100,7 @@ texture = ExtResource("1_1cbjo")
 position = Vector2(-1, -27)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_1cbjo")
-script = ExtResource("3_jkg0m")
+script = ExtResource("3_qq5qd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DialogIndicator"]
 libraries = {
@@ -114,5 +115,13 @@ shape = SubResource("RectangleShape2D_qk04g")
 position = Vector2(-1, 1)
 scale = Vector2(-2.89913, -2.9273)
 
+[node name="DialogBox" parent="." instance=ExtResource("5_3abvm")]
+offset_left = -136.0
+offset_top = 74.0
+offset_right = 1142.0
+offset_bottom = 324.0
+scale = Vector2(0.25, 0.25)
+
+[connection signal="parent_ready" from="." to="DialogBox" method="_on_npc_parent_ready"]
 [connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
 [connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]

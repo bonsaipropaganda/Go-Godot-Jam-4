@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=10 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild_black.png" id="1_hdaa8"]
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]
 [ext_resource type="PackedScene" uid="uid://vxonjkl1uxu3" path="res://Scenes/door.tscn" id="4_frvsx"]
-[ext_resource type="PackedScene" uid="uid://qsx4utswcism" path="res://Scenes/npc.tscn" id="5_stjdd"]
+[ext_resource type="PackedScene" uid="uid://da6wtt163uf5f" path="res://Scenes/npc.tscn" id="5_stjdd"]
+[ext_resource type="Texture2D" uid="uid://bs36g5a1nk6vq" path="res://Art/NewBrain.png" id="7_xrhsr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4115,16 +4116,19 @@ layer_0/tile_data = PackedInt32Array(-65530, 589824, 5, -65531, 589824, 5, -6553
 [node name="Door" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(-123, -19)
 scale = Vector2(1.25, 1.25)
+open = true
 
 [node name="Door2" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(123, -2)
 rotation = 3.14159
 scale = Vector2(1.25, 1.25)
+open = true
 
 [node name="Door3" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(-1.19209e-07, -93)
 rotation = 1.5708
 scale = Vector2(1.35, 1.35)
+open = true
 
 [node name="Door4" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(5.68434e-14, 88)
@@ -4134,3 +4138,14 @@ open = true
 
 [node name="NPC" parent="." instance=ExtResource("5_stjdd")]
 position = Vector2(46, 397)
+dialog_array = ["II'm the first NPC", "I'm not done yet", "string number 3"]
+character_name = "ahh"
+character_picture = ExtResource("7_xrhsr")
+
+[node name="NPC2" parent="." instance=ExtResource("5_stjdd")]
+position = Vector2(-517, -16)
+dialog_array = ["I'm the second NPC"]
+
+[node name="NPC3" parent="." instance=ExtResource("5_stjdd")]
+position = Vector2(497, 2)
+dialog_array = ["im the third npc"]
