@@ -30,18 +30,29 @@ var discard = []
 func _ready():
 	
 	#ADD CARDS TO DECK
-	for n in more_speed_cards:
-		deck.append("more_speed")
-	for n in more_health_cards:
-		deck.append("more_health")
-	for n in more_anger_cards:
-		deck.append("more_anger")
-	for n in more_fear_cards:
-		deck.append("more_fear")
-	for n in more_anxiety_cards:
-		deck.append("more_anxiety")
-	for n in more_grief_cards:
-		deck.append("more_grief")
+	if more_speed_cards:
+		for n in more_speed_cards:
+			deck.append("more_speed")
+	
+	if more_health_cards:
+		for n in more_health_cards:
+			deck.append("more_health")
+			
+	if more_anger_cards:
+		for n in more_anger_cards:
+			deck.append("more_anger")
+			
+	if more_fear_cards:
+		for n in more_fear_cards:
+			deck.append("more_fear")
+			
+	if more_anxiety_cards:
+		for n in more_anxiety_cards:
+			deck.append("more_anxiety")
+			
+	if more_grief_cards:
+		for n in more_grief_cards:
+			deck.append("more_grief")
 	
 	deck.shuffle()
 	
