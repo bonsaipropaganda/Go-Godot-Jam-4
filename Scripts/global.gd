@@ -11,12 +11,16 @@ var show_debug_ui = false
 var camera
 
 #GLOBAL CARD EFFECT VARIABLES
-var more_enemy = 1
-var more_health = 1
-var more_speed = 1
-var more_fear = 1
-var more_anger = 1
-var more_anxiety = 1
+var more_enemy = 0
+var more_health = 0
+var more_speed = 0
+var more_fear = 0
+var more_anger = 0
+var more_anxiety = 0
+
+#GLOBAL CARD MULTIPLIERS PER EFFECT NUMBER ABOVE
+var speed_multiplier = 0.25
+var health_multiplier = 0.25
 
 
 func _ready() -> void:

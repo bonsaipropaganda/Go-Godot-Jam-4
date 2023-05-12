@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://boufx20ggdd05"]
+[gd_scene load_steps=13 format=3 uid="uid://boufx20ggdd05"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_54rg8"]
 [ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="3_b4b4s"]
 [ext_resource type="Texture2D" uid="uid://ci5a4jv5bd3hn" path="res://Art/cards.png" id="3_nuo30"]
+[ext_resource type="Script" path="res://Scenes/Discard.gd" id="4_m5k3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ygas"]
 size = Vector2(33, 44.25)
@@ -82,13 +83,14 @@ offset = Vector2(-1, 2.08165e-12)
 
 [node name="Discard" type="Button" parent="CardSprites"]
 z_index = 1
-offset_left = -21.0
-offset_top = 19.0
-offset_right = 19.0
-offset_bottom = 37.0
+offset_left = -22.0
+offset_top = 13.0
+offset_right = 18.0
+offset_bottom = 31.0
 theme_override_fonts/font = ExtResource("3_b4b4s")
 theme_override_font_sizes/font_size = 8
 text = "Discard"
+script = ExtResource("4_m5k3n")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

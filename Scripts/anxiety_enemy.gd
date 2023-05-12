@@ -1,10 +1,14 @@
 extends Area2D
-@export var speed : int
+@export var start_speed : int
 @export var max_health : int
 @export var health_height : int
 
-@onready var health = max_health
-@onready var health_bar_size = health/5
+#ADJUST SPEED ACCORDING TO CARD MULTIPLIER
+@onready var speed = start_speed * ((Global.more_speed * Global.speed_multiplier) + 1)
+
+#ADJUST HEALTH ACCORDING TO CARD MULTIPLIER
+@onready var health = max_health * ((Global.more_health * Global.health_multiplier) + 1)
+@onready var health_bar_size = health/5 # ADJUST HEALTH BAR SIZE TO HEALTH AMOUNT
 
 @onready var brain = get_parent().get_node("Brain")
 
@@ -13,6 +17,7 @@ var mouse_in = false
 var dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	max_health = health
 	$AnimatedSprite2D.play()
 	$HealthBar.size = Vector2(health_bar_size,health_height)
 	$HealthBar.position -= Vector2(health_bar_size/2,0)

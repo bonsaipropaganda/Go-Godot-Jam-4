@@ -16,13 +16,13 @@ func _ready():
 	#$CardSprites.frame = randi() % $CardSprites.sprite_frames.get_frame_count("default")
 	match value:
 		"more_health":
-			Global.more_health += 0.5;
+			Global.more_health += 1; # increases health of mobs by 25%
 			$CardSprites.set_animation("more_health")
 		"more_speed":
-			Global.more_speed += 0.5;
+			Global.more_speed += 1; # increases speed of mobs by 25%
 			$CardSprites.set_animation("more_speed")
 		"more_anger":
-			Global.more_anger += 1; #each more anger spawns another anger enemy each time one spawns
+			Global.more_anger += 1; # increases anger spawn rate by 25%
 			$CardSprites.set_animation("more_anger")
 	
 	#FIND DESCRIPTION ACCORDING TO VALUE

@@ -3,8 +3,6 @@ extends Area2D
 @export var max_health : int
 @export var health_height : int
 
-@onready var health = max_health
-@onready var health_bar_size = health/5
 
 @onready var brain = get_parent().get_node("Brain")
 
@@ -13,10 +11,16 @@ var mouse_in = false
 var dead = false
 
 #ADJUST SPEED ACCORDING TO CARD MULTIPLIER
-@onready var speed = start_speed * Global.more_speed
+@onready var speed = start_speed * ((Global.more_speed * Global.speed_multiplier) + 1)
+
+#ADJUST HEALTH ACCORDING TO CARD MULTIPLIER
+@onready var health = max_health * ((Global.more_health * Global.health_multiplier) + 1)
+
+@onready var health_bar_size = health/5 # ADJUST HEALTH BAR SIZE TO HEALTH AMOUNT
 
 func _ready():
 	$AnimatedSprite2D.play()
+	max_health = health
 	$HealthBar.size = Vector2(health_bar_size,health_height)
 	$HealthBar.position -= Vector2(health_bar_size/2,0)
 	$HealthBar/RemainingHealth.size = Vector2(health_bar_size,health_height)
@@ -38,6 +42,7 @@ func _input(event):
 		if health <= 0:
 			$Damage.stop()
 			$Death.play()
+			#Global.camera.shake(0.1,5,5)
 			dead = true
 			hide()
 			
