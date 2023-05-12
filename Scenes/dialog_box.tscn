@@ -89,9 +89,6 @@ offset_top = 470.0
 offset_right = 1278.0
 offset_bottom = 720.0
 script = ExtResource("1_scwdk")
-dialog_array = ["test string 1", "test string 2"]
-character_name = "test name"
-character_picture = ExtResource("4_5ow82")
 
 [node name="Name" type="RichTextLabel" parent="."]
 layout_mode = 0

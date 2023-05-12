@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=12 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild_black.png" id="1_hdaa8"]
+[ext_resource type="Script" path="res://Scenes/CanvasLayer.gd" id="1_qrhjs"]
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]
+[ext_resource type="PackedScene" uid="uid://dgjovjn0cwivc" path="res://Scenes/dialog_box.tscn" id="2_xyfwa"]
 [ext_resource type="PackedScene" uid="uid://vxonjkl1uxu3" path="res://Scenes/door.tscn" id="4_frvsx"]
 [ext_resource type="PackedScene" uid="uid://da6wtt163uf5f" path="res://Scenes/npc.tscn" id="5_stjdd"]
+[ext_resource type="Texture2D" uid="uid://bs36g5a1nk6vq" path="res://Art/NewBrain.png" id="8_malta"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4105,6 +4108,10 @@ sources/2 = SubResource("TileSetAtlasSource_htikf")
 [node name="Scene_Overworld" type="Node2D"]
 metadata/_edit_horizontal_guides_ = []
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_qrhjs")
+dialog_scene = ExtResource("2_xyfwa")
+
 [node name="Walls" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ajklf")
 format = 2
@@ -4136,10 +4143,9 @@ scale = Vector2(1.35, 1.35)
 open = true
 
 [node name="NPC" parent="." instance=ExtResource("5_stjdd")]
-position = Vector2(46, 397)
+position = Vector2(-26, 375)
+dialog_array = ["something unique", "the queen is dead"]
+character_name = "dead quesn"
+character_picture = ExtResource("8_malta")
 
-[node name="NPC2" parent="." instance=ExtResource("5_stjdd")]
-position = Vector2(-517, -16)
-
-[node name="NPC3" parent="." instance=ExtResource("5_stjdd")]
-position = Vector2(497, 2)
+[connection signal="npc_speech" from="NPC" to="CanvasLayer" method="_on_npc_npc_speech"]

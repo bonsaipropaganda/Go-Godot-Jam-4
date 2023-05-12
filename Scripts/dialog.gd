@@ -5,10 +5,10 @@ extends ColorRect
 # set the dialog_array with strings for what you want the character to say
 
 # these variables can be set for each instance of the dialog box
-@export var text_speed = 0.05
-@export var dialog_array = []
-@export var character_name: String
-@export var character_picture: Texture
+var text_speed = 0.05
+var dialog_array = []
+var character_name: String
+var character_picture: Texture
 
 # this is the current phrase that is being displayed
 var phrase_num = 0
