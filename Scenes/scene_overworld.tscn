@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=9 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild_black.png" id="1_hdaa8"]
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]
 [ext_resource type="PackedScene" uid="uid://vxonjkl1uxu3" path="res://Scenes/door.tscn" id="4_frvsx"]
+[ext_resource type="PackedScene" uid="uid://qsx4utswcism" path="res://Scenes/npc.tscn" id="5_stjdd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4130,3 +4131,6 @@ position = Vector2(5.68434e-14, 88)
 rotation = -1.5708
 scale = Vector2(1.35, 1.35)
 open = true
+
+[node name="NPC" parent="." instance=ExtResource("5_stjdd")]
+position = Vector2(46, 397)

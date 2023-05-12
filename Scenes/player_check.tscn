@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cerbn63cfgjxo"]
+
+[ext_resource type="Script" path="res://PlayerCheck.gd" id="1_rpjpn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cgq1"]
+
+[node name="PlayerCheck" type="Area2D"]
+script = ExtResource("1_rpjpn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7cgq1")
