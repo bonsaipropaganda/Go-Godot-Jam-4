@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cffqrjb1rhp7p"]
+
+[ext_resource type="Script" path="res://DescriptionBox.gd" id="1_41dr6"]
+[ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="2_1ecjq"]
+
+[node name="DescriptionBox" type="Label"]
+z_index = 25
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_1ecjq")
+theme_override_font_sizes/font_size = 8
+text = "Test"
+script = ExtResource("1_41dr6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)

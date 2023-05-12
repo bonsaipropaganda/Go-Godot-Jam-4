@@ -1,7 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://boufx20ggdd05"]
+[gd_scene load_steps=12 format=3 uid="uid://boufx20ggdd05"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_54rg8"]
+[ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="3_b4b4s"]
 [ext_resource type="Texture2D" uid="uid://ci5a4jv5bd3hn" path="res://Art/cards.png" id="3_nuo30"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ygas"]
+size = Vector2(33, 44.25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urw0y"]
 atlas = ExtResource("3_nuo30")
@@ -63,21 +67,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ygas"]
-size = Vector2(33, 44.25)
-
 [node name="Card" type="Area2D"]
 script = ExtResource("1_54rg8")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ygas")
+
 [node name="CardSprites" type="AnimatedSprite2D" parent="."]
 z_index = 20
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dji4u")
 animation = &"more_speed"
 offset = Vector2(-1, 2.08165e-12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.08165e-12, 0.125)
-shape = SubResource("RectangleShape2D_0ygas")
+[node name="Discard" type="Button" parent="CardSprites"]
+z_index = 1
+offset_left = -21.0
+offset_top = 19.0
+offset_right = 19.0
+offset_bottom = 37.0
+theme_override_fonts/font = ExtResource("3_b4b4s")
+theme_override_font_sizes/font_size = 8
+text = "Discard"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
