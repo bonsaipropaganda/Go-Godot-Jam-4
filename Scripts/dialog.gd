@@ -5,10 +5,10 @@ extends ColorRect
 # set the dialog_array with strings for what you want the character to say
 
 # these variables can be set for each instance of the dialog box
-var text_speed = 0.5
-var dialog_array
-var character_name
-var character_picture
+@export var text_speed = 0.05
+@export var dialog_array = []
+@export var character_name: String
+@export var character_picture: Texture
 
 # this is the current phrase that is being displayed
 var phrase_num = 0
@@ -16,7 +16,11 @@ var phrase_num = 0
 var finished = false
 
 func _ready() -> void:
-	pass
+	# sets the character name, picture, and checks for dialog array
+	$Name.text = character_name
+	$SpeakerPortrait.texture = character_picture
+	assert(dialog_array.size() > 0, "Dialog array is empty")
+	next_phrase()
 
 # plays the next up phrase
 func next_phrase():
@@ -55,11 +59,3 @@ func _process(delta: float) -> void:
 		else:
 			# if the phrase is not finished showing show the rest of the phrase
 			$Text.visible_characters = len($Text.text)
-
-
-func _on_npc_parent_ready() -> void:
-	# sets the character name, picture, and checks for dialog array
-	$Name.text = character_name
-	$SpeakerPortrait.texture = character_picture
-	assert(dialog_array.size() > 0, "Dialog array is empty")
-	next_phrase()

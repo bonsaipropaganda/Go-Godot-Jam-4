@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://da6wtt163uf5f"]
+[gd_scene load_steps=9 format=3 uid="uid://da6wtt163uf5f"]
 
 [ext_resource type="Texture2D" uid="uid://4tca42lxkf2i" path="res://Art/icon.svg" id="1_1cbjo"]
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_q1r7j"]
 [ext_resource type="PackedScene" uid="uid://cerbn63cfgjxo" path="res://Scenes/player_check.tscn" id="3_jj12n"]
 [ext_resource type="Script" path="res://Scripts/DialogIndicator.gd" id="3_qq5qd"]
-[ext_resource type="PackedScene" uid="uid://dgjovjn0cwivc" path="res://Scenes/dialog_box.tscn" id="5_3abvm"]
 
 [sub_resource type="Animation" id="Animation_dvc26"]
 length = 0.001
@@ -115,13 +114,5 @@ shape = SubResource("RectangleShape2D_qk04g")
 position = Vector2(-1, 1)
 scale = Vector2(-2.89913, -2.9273)
 
-[node name="DialogBox" parent="." instance=ExtResource("5_3abvm")]
-offset_left = -136.0
-offset_top = 74.0
-offset_right = 1142.0
-offset_bottom = 324.0
-scale = Vector2(0.25, 0.25)
-
-[connection signal="parent_ready" from="." to="DialogBox" method="_on_npc_parent_ready"]
 [connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]
 [connection signal="body_exited" from="PlayerCheck" to="." method="_on_player_check_body_exited"]
