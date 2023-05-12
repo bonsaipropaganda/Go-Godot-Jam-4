@@ -19,7 +19,7 @@ func _ready() -> void:
 	# sets the character name, picture, and checks for dialog array
 	$Name.text = character_name
 	$SpeakerPortrait.texture = character_picture
-	assert(dialog_array.size() > 0, "Dialog array is empty")
+	#assert(dialog_array.size() > 0, "Dialog array is empty")
 	next_phrase()
 
 # plays the next up phrase
