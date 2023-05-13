@@ -2,6 +2,7 @@ extends Area2D
 @export var start_speed : int
 @export var max_health : int
 @export var health_height : int
+@export var victory_multiplier: int
 
 
 @onready var brain = get_parent().get_node("Brain")
@@ -17,6 +18,9 @@ var dead = false
 @onready var health = max_health * ((Global.more_health * Global.health_multiplier) + 1)
 
 @onready var health_bar_size = health/5 # ADJUST HEALTH BAR SIZE TO HEALTH AMOUNT
+
+#SIGNAL TO RAISE VICTORY BAR UPON DEATH
+signal raise_victory
 
 func _ready():
 	$AnimatedSprite2D.play()
@@ -43,6 +47,7 @@ func _input(event):
 			$Damage.stop()
 			$Death.play()
 			#Global.camera.shake(0.1,5,5)
+			emit_signal("raise_victory",victory_multiplier)
 			dead = true
 			hide()
 			

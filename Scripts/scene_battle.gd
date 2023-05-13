@@ -44,12 +44,13 @@ func _on_mob_spawn_timer_timeout():
 		
 					# Set the mob's position to a random location on the spawn path
 					mob.position = mob_spawn_location.position
-					
-					
 		
 					# Choose the velocity for the mob.
 					mob.velocity = mob.global_position.direction_to(brain.global_position)
 					print("spawn " + mob_to_spawn + " " + str(n))
+					
+					# Connect the mob's victory signal
+					mob.raise_victory.connect(_on_anger_enemy_raise_victory)
 					
 					# Spawn the mob by adding it to the Main scene.
 					add_child(mob)
@@ -74,3 +75,6 @@ func _on_mob_spawn_timer_timeout():
 				
 				# Spawn the mob by adding it to the Main scene.
 				add_child(mob)
+
+func _on_anger_enemy_raise_victory(vp):
+	victory_score += vp
