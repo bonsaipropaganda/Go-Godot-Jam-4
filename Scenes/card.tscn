@@ -1,10 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://boufx20ggdd05"]
+[gd_scene load_steps=17 format=3]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_54rg8"]
 [ext_resource type="Texture2D" uid="uid://clgsdgagmssh3" path="res://Art/NewCards.png" id="3_4bm68"]
 [ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="3_b4b4s"]
 [ext_resource type="Texture2D" uid="uid://ci5a4jv5bd3hn" path="res://Art/cards.png" id="3_nuo30"]
-[ext_resource type="Script" path="res://Scenes/Discard.gd" id="4_m5k3n"]
+[ext_resource type="Script" path="res://Scripts/Discard.gd" id="4_m5k3n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ygas"]
 size = Vector2(33, 44.25)

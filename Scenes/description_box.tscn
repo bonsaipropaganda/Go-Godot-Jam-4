@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cffqrjb1rhp7p"]
+[gd_scene load_steps=3 format=3]
 
-[ext_resource type="Script" path="res://DescriptionBox.gd" id="1_41dr6"]
+[ext_resource type="Script" path="res://Scripts/DescriptionBox.gd" id="1_41dr6"]
 [ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="2_1ecjq"]
 
 [node name="DescriptionBox" type="Label"]

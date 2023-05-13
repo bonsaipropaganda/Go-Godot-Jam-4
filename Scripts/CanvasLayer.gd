@@ -14,8 +14,9 @@ func _process(delta: float) -> void:
 
 func _on_npc_npc_speech(dialog_array,character_name,character_picture) -> void:
 	var current_dialog = dialog_scene.instantiate()
-	add_child(current_dialog)
 	current_dialog.dialog_array = dialog_array
 	current_dialog.character_name = character_name
 	current_dialog.character_picture = character_picture
-	print(current_dialog.dialog_array)
+	current_dialog.scale = Vector2(.7,.7)
+	current_dialog.position = Vector2(150,525)
+	add_child(current_dialog)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4tca42lxkf2i" path="res://Art/icon.svg" id="1_1cbjo"]
 [ext_resource type="Script" path="res://Scripts/npc.gd" id="1_q1r7j"]
-[ext_resource type="PackedScene" uid="uid://cerbn63cfgjxo" path="res://Scenes/player_check.tscn" id="3_jj12n"]
+[ext_resource type="PackedScene" path="res://Scenes/player_check.tscn" id="3_jj12n"]
 [ext_resource type="Script" path="res://Scripts/DialogIndicator.gd" id="3_qq5qd"]
 
 [sub_resource type="Animation" id="Animation_dvc26"]
