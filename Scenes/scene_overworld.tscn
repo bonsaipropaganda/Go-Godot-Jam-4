@@ -4298,6 +4298,7 @@ scale = Vector2(1.35, 1.35)
 open = true
 
 [node name="Anger Boss" parent="." instance=ExtResource("5_stjdd")]
+texture_filter = 1
 position = Vector2(-23, 385)
 dialog_array = ["WHAT ARE YOU DOING HERE??!!!", "GRAWHHHHHHH!!!!!", "WHY IS MY HEAD ON FIRE?!!", "IT'S YOUR FAULT!!!!!"]
 character_name = "Anger"
@@ -4330,7 +4331,8 @@ stream = ExtResource("17_6r8rw")
 autoplay = true
 
 [node name="HoodGuy" parent="." instance=ExtResource("5_stjdd")]
-position = Vector2(-47, -28)
+texture_filter = 1
+position = Vector2(-66, -48)
 dialog_array = ["Oh hey, welcome to your brain. Dark place, huh? ", "It's cause you've been really emotional lately.", "Anyway, if you're trying some sort of inner peace, you're gonna need a lot less emotions controlling your every decision. Less emotions means More Peace..", "Make sense?", "OH! Also, be aware of your own baggage. They kinda manifest themselves as cards here.. who knows why!", "But as you defeat your emotions, I think you'll maybe be able to get rid of some of that baggage..", "Ok, good luck! Bye bye :)"]
 character_name = "Hood Guy"
 character_picture = ExtResource("18_rdvrv")

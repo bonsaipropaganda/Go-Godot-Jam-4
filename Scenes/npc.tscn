@@ -85,7 +85,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qk04g"]
-size = Vector2(31.25, 30.5)
+size = Vector2(12, 17)
 
 [node name="NPC" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -103,11 +103,11 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 11)
+position = Vector2(0, 11.5)
 shape = SubResource("RectangleShape2D_qk04g")
 
 [node name="PlayerCheck" parent="." instance=ExtResource("3_jj12n")]
-position = Vector2(-2.11758e-22, 11)
+position = Vector2(3.8147e-06, 11)
 scale = Vector2(-2.89913, -2.9273)
 
 [connection signal="body_entered" from="PlayerCheck" to="." method="_on_player_check_body_entered"]

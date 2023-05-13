@@ -9,6 +9,8 @@ signal walked_away
 @export var character_picture: PackedScene
 @export var character_sprite: PackedScene
 
+#@export var battle_scene: PackedScene
+
 var player_present := false
 
 # Called when the node enters the scene tree for the first time.

@@ -27,6 +27,9 @@ func next_phrase():
 	# checks if there are any phrases left
 	if phrase_num >= len(dialog_array):
 		# if there aren't any dialog box closes
+		
+		#SAVE OVERWORLD STATUS
+		Global.overworld_save = get_tree().get_root()
 		queue_free()
 		return
 		

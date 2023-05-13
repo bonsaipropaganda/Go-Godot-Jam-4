@@ -22,6 +22,9 @@ var more_anxiety = 0
 var speed_multiplier = 0.25
 var health_multiplier = 0.25
 
+#OVERWORLD SAVE USED FOR TRANSITIONING INTO BATTLE
+var overworld_save = null
+
 
 func _ready() -> void:
 	pass
