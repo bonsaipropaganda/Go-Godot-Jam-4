@@ -4,23 +4,22 @@ extends Node2D
 @export var anger_percent: int
 @export var fear_percent: int
 @export var anger_rate: int
-@export var battle_length: int
+@export var total_victory_score: int
+@export var victory_multiplier: int
 
 @onready var brain = get_node("Brain")
+@onready var victory_score = 0
+
+signal killed_enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$mob_spawn_timer.start()
 	Global.camera = $Camera2D
-	
-	$"Battle Timer".wait_time = battle_length
-	$"Battle Timer".start()
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	$"Battle Timer/Label".text = str($"Battle Timer".wait_time)
-
+func _process(_delta):	
+	pass
 
 
 func _on_mob_spawn_timer_timeout():
@@ -45,6 +44,8 @@ func _on_mob_spawn_timer_timeout():
 		
 					# Set the mob's position to a random location on the spawn path
 					mob.position = mob_spawn_location.position
+					
+					
 		
 					# Choose the velocity for the mob.
 					mob.velocity = mob.global_position.direction_to(brain.global_position)

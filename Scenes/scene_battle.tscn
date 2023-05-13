@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://xumdtd5r0j3c"]
+[gd_scene load_steps=30 format=3 uid="uid://xumdtd5r0j3c"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
@@ -13,6 +13,8 @@
 [ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="9_l803j"]
 [ext_resource type="PackedScene" uid="uid://cg12jc2mq1u3b" path="res://Scenes/player_deck.tscn" id="10_abq2l"]
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="13_4naci"]
+[ext_resource type="Texture2D" uid="uid://rm0ddq8t3ahu" path="res://Art/battle_bar.png" id="14_gmu6b"]
+[ext_resource type="Script" path="res://Scenes/VictoryMarker.gd" id="15_r4cu0"]
 
 [sub_resource type="Animation" id="Animation_fbc4v"]
 resource_name = "Flashing Background"
@@ -186,6 +188,8 @@ fear_mob = ExtResource("2_q6vyy")
 anger_percent = 80
 fear_percent = 20
 anger_rate = 1
+total_victory_score = 65
+victory_multiplier = 5
 
 [node name="Back Background" type="ColorRect" parent="."]
 offset_left = -185.0
@@ -293,12 +297,13 @@ color = Color(0.211765, 0.211765, 0.211765, 1)
 stream = ExtResource("9_l803j")
 autoplay = true
 
-[node name="Battle Timer" type="Timer" parent="."]
+[node name="BattleTimer" type="Timer" parent="."]
 wait_time = 60.0
 one_shot = true
 autostart = true
 
-[node name="Label" type="Label" parent="Battle Timer"]
+[node name="Label" type="Label" parent="BattleTimer"]
+visible = false
 offset_left = -20.0
 offset_top = -87.0
 offset_right = 20.0
@@ -307,6 +312,17 @@ theme_override_fonts/font = ExtResource("13_4naci")
 theme_override_font_sizes/font_size = 12
 text = "0:00"
 horizontal_alignment = 1
+
+[node name="VictoryBar" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("14_gmu6b")
+
+[node name="VictoryMarker" type="ColorRect" parent="VictoryBar"]
+offset_left = -1.0
+offset_top = -77.0
+offset_right = 1.0
+offset_bottom = -62.0
+script = ExtResource("15_r4cu0")
 
 [connection signal="timeout" from="Camera2D/ResetCam" to="Camera2D" method="_on_reset_cam_timeout"]
 [connection signal="animation_looped" from="Brain/AnimatedSprite2D" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_animated_sprite_2d_animation_looped"]

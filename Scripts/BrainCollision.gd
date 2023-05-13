@@ -18,6 +18,7 @@ func _on_area_entered(area):
 		$"..".animation = "hit"
 		# shake(duration, frequency, amplitude):
 		Global.camera.shake(0.25,10,5)
+		$"../../..".victory_score -= $"../../..".victory_multiplier
 		area.queue_free()
 
 
