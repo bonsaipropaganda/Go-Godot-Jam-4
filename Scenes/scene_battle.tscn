@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bs36g5a1nk6vq" path="res://Art/NewBrain.png" id="7_8yud8"]
 [ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="7_y2qjd"]
 [ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="9_l803j"]
-[ext_resource type="PackedScene" uid="uid://cg12jc2mq1u3b" path="res://Scenes/player_deck.tscn" id="10_abq2l"]
+[ext_resource type="PackedScene" uid="uid://ci7kcqcdce5ul" path="res://Scenes/player_deck.tscn" id="10_abq2l"]
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="13_4naci"]
 [ext_resource type="Texture2D" uid="uid://rm0ddq8t3ahu" path="res://Art/battle_bar.png" id="14_gmu6b"]
-[ext_resource type="Script" path="res://Scenes/VictoryMarker.gd" id="15_r4cu0"]
+[ext_resource type="Script" path="res://Scripts/VictoryMarker.gd" id="15_eix38"]
 
 [sub_resource type="Animation" id="Animation_fbc4v"]
 resource_name = "Flashing Background"
@@ -323,7 +323,7 @@ offset_left = -1.0
 offset_top = -77.0
 offset_right = 1.0
 offset_bottom = -62.0
-script = ExtResource("15_r4cu0")
+script = ExtResource("15_eix38")
 
 [connection signal="timeout" from="Camera2D/ResetCam" to="Camera2D" method="_on_reset_cam_timeout"]
 [connection signal="animation_looped" from="Brain/AnimatedSprite2D" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_animated_sprite_2d_animation_looped"]

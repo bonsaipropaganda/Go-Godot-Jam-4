@@ -52,7 +52,7 @@ script = ExtResource("1_hwdxi")
 start_speed = 10
 max_health = 100
 health_height = 2
-victory_multiplier = 1
+victory_multiplier = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u6m1n")

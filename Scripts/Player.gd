@@ -8,7 +8,8 @@ func get_input():
 	#print(input_direction)
 	velocity = input_direction * speed
 	
-	$AnimatedSprite2D.flip_h = velocity.x < 0
+	if(velocity.x != 0):
+		$AnimatedSprite2D.flip_h = velocity.x < 0
 	
 	if previous_input_direction != input_direction:
 		print("new direction")
@@ -31,7 +32,9 @@ func get_input():
 					"walk_side":
 						$AnimatedSprite2D.set_animation("idle_side")
 						
+		$AnimatedSprite2D.play()
 	previous_input_direction = input_direction
+	
 	
 func _physics_process(_delta):
 	get_input()

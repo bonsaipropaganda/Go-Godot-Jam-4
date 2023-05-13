@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cirs6ry1xlkpn"]
+
+[ext_resource type="Texture2D" uid="uid://degy47vsaddgs" path="res://Art/headshots/headshots_fear_strip3.png" id="1_hutq6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24wyj"]
+atlas = ExtResource("1_hutq6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15ndv"]
+atlas = ExtResource("1_hutq6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2185"]
+atlas = ExtResource("1_hutq6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fknsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24wyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_15ndv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2185")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_headshot" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fknsy")
+frame_progress = 0.722482

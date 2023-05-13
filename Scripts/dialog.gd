@@ -8,7 +8,7 @@ extends ColorRect
 var text_speed = 0.05
 var dialog_array = []
 var character_name: String
-var character_picture: Texture
+#var character_picture: Texture
 
 # this is the current phrase that is being displayed
 var phrase_num = 0
@@ -18,7 +18,7 @@ var finished = false
 func _ready() -> void:
 	# sets the character name, picture, and checks for dialog array
 	$Name.text = character_name
-	$SpeakerPortrait.texture = character_picture
+	#$SpeakerPortrait.texture = character_picture
 	#assert(dialog_array.size() > 0, "Dialog array is empty")
 	next_phrase()
 

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://btdc1q573spdf"]
+
+[ext_resource type="Texture2D" uid="uid://l8o4oxsajq1u" path="res://Art/headshots/headshots_anxiety_strip3.png" id="1_fw4yd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2akv"]
+atlas = ExtResource("1_fw4yd")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ga6f"]
+atlas = ExtResource("1_fw4yd")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qdvn4"]
+atlas = ExtResource("1_fw4yd")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fknsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2akv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ga6f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qdvn4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_headshot" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fknsy")
+frame_progress = 0.722482

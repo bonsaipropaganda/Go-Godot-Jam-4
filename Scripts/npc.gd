@@ -1,18 +1,19 @@
 extends RigidBody2D
 
 signal npc_speech
+signal walked_away
 
 # these variables can be set for each instance of the dialog box
 @export var dialog_array = []
 @export var character_name: String
-@export var character_picture: Texture
+@export var character_picture: PackedScene
+@export var character_sprite: PackedScene
 
 var player_present := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
-
+	add_child(character_sprite.instantiate())
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -29,3 +30,4 @@ func _on_player_check_body_entered(body: Node2D) -> void:
 func _on_player_check_body_exited(body: Node2D) -> void:
 	$DialogIndicator.visible = false
 	player_present = false
+	walked_away.emit()

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbniaaw7y8pnp"]
+
+[ext_resource type="Texture2D" uid="uid://coxvs7dvqhvw0" path="res://Art/hoodguy.png" id="1_0o758"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53vuf"]
+atlas = ExtResource("1_0o758")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41xuv"]
+atlas = ExtResource("1_0o758")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tepy"]
+atlas = ExtResource("1_0o758")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tfw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53vuf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41xuv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tepy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_sprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8tfw6")
+autoplay = "default"

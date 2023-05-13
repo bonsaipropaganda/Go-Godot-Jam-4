@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://d56b5ugface1"]
+
+[ext_resource type="Texture2D" uid="uid://iiq8yyrfb2r" path="res://Art/enemieabosses.png" id="1_2o8lq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mm03"]
+atlas = ExtResource("1_2o8lq")
+region = Rect2(144, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pg6yo"]
+atlas = ExtResource("1_2o8lq")
+region = Rect2(192, 0, 48, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o3at"]
+atlas = ExtResource("1_2o8lq")
+region = Rect2(240, 0, 48, 56)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8tfw6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mm03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pg6yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o3at")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_sprite" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_8tfw6")
+autoplay = "default"

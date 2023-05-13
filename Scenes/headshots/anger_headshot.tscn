@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3k4l532ch8sm"]
+
+[ext_resource type="Texture2D" uid="uid://dgqo0srb7o7np" path="res://Art/headshots_strip3.png" id="1_5ngvx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xbjn"]
+atlas = ExtResource("1_5ngvx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eem6i"]
+atlas = ExtResource("1_5ngvx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2un2"]
+atlas = ExtResource("1_5ngvx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fknsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xbjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eem6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2un2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_headshot" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fknsy")
+frame_progress = 0.722482

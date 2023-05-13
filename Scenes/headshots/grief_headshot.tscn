@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bp31hturw0lnu"]
+
+[ext_resource type="Texture2D" uid="uid://c8cswssgkwdak" path="res://Art/headshots/headshots_grief_strip4.png" id="1_de5se"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we5dl"]
+atlas = ExtResource("1_de5se")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2oqn"]
+atlas = ExtResource("1_de5se")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eexcb"]
+atlas = ExtResource("1_de5se")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rn8f"]
+atlas = ExtResource("1_de5se")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fknsy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we5dl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2oqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eexcb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4rn8f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="anger_headshot" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_fknsy")
+frame_progress = 0.722482
