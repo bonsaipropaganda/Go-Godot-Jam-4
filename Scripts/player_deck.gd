@@ -66,10 +66,43 @@ func _ready():
 	for n in hand.size():
 		var new_card = card_path.instantiate()
 		new_card.position = hand_positions[n]
+		new_card.card_slot = n
 		new_card.value = hand[n]
+		new_card.discard_card.connect(_on_card_discard_card)
 		add_child(new_card)
 		print("Card created:" + new_card.value)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+
+func _on_card_discard_card(card_slot):
+	print("It worked!")
+	#MOVE CARD FROM HAND TO DISCARD
+	discard.append(hand.pop_at(card_slot))
+	
+	#MOVE NEXT CARD FROM DECK TO HAND
+	if deck.size() > 0:
+		hand.insert(card_slot,deck.pop_front())
+	else: #IF DECK EMPTY - SHUFFLE DISCARD AND PUT IN DECK
+		deck = discard
+		discard = []
+		deck.shuffle()
+		hand.insert(card_slot,deck.pop_front())
+
+	#CREATE NEW CARD NODE
+	var new_card = card_path.instantiate()
+	new_card.position = hand_positions[card_slot]
+	new_card.card_slot = card_slot
+	new_card.value = hand[card_slot]
+	new_card.discard_card.connect(_on_card_discard_card)
+	add_child(new_card)
+	print("Card created:" + new_card.value)
+
+	#ADD CARDS TO HAND
+	if deck.size() > 0:
+		for n in hand_size:
+			if hand.size() < hand_size:
+				hand.append(deck.pop_front())
+
+

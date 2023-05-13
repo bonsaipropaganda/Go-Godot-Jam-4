@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bia5eaqnmh044"]
+
+[ext_resource type="Script" path="res://Scripts/card.gd" id="1_2wkdh"]
+[ext_resource type="Texture2D" uid="uid://clgsdgagmssh3" path="res://Art/NewCards.png" id="2_oe0nl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ygas"]
+size = Vector2(33, 44.25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8e4w"]
+atlas = ExtResource("2_oe0nl")
+region = Rect2(216, 46, 33, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8g82"]
+atlas = ExtResource("2_oe0nl")
+region = Rect2(216, 0, 33, 46)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dji4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8e4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8g82")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[node name="Card" type="Area2D"]
+script = ExtResource("1_2wkdh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0ygas")
+
+[node name="CardSprites" type="AnimatedSprite2D" parent="."]
+z_index = 20
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_dji4u")
+animation = &"Default"
+offset = Vector2(-1, 2.08165e-12)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

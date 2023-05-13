@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://boufx20ggdd05"]
+[gd_scene load_steps=17 format=3 uid="uid://boufx20ggdd05"]
 
 [ext_resource type="Script" path="res://Scripts/card.gd" id="1_54rg8"]
+[ext_resource type="Texture2D" uid="uid://clgsdgagmssh3" path="res://Art/NewCards.png" id="3_4bm68"]
 [ext_resource type="FontFile" uid="uid://bc5tli1ehgeet" path="res://Art/Fonts/Kenney Mini.ttf" id="3_b4b4s"]
 [ext_resource type="Texture2D" uid="uid://ci5a4jv5bd3hn" path="res://Art/cards.png" id="3_nuo30"]
 [ext_resource type="Script" path="res://Scenes/Discard.gd" id="4_m5k3n"]
@@ -32,6 +33,10 @@ region = Rect2(108, 47, 33, 45)
 atlas = ExtResource("3_nuo30")
 region = Rect2(108, 0, 33, 45)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji85e"]
+atlas = ExtResource("3_4bm68")
+region = Rect2(216, 46, 33, 46)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_dji4u"]
 animations = [{
 "frames": [{
@@ -41,7 +46,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ihxt1")
 }],
-"loop": true,
+"loop": false,
 "name": &"more_anger",
 "speed": 5.0
 }, {
@@ -52,7 +57,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qx71v")
 }],
-"loop": true,
+"loop": false,
 "name": &"more_health",
 "speed": 5.0
 }, {
@@ -63,10 +68,38 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_6pxy0")
 }],
-"loop": true,
+"loop": false,
 "name": &"more_speed",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji85e")
+}],
+"loop": false,
+"name": &"top",
+"speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_r58ow"]
+resource_name = "0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3u35h"]
+_data = {
+"0": SubResource("Animation_r58ow")
+}
 
 [node name="Card" type="Area2D"]
 script = ExtResource("1_54rg8")
@@ -78,7 +111,8 @@ shape = SubResource("RectangleShape2D_0ygas")
 z_index = 20
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dji4u")
-animation = &"more_speed"
+animation = &"more_anger"
+autoplay = "top"
 offset = Vector2(-1, 2.08165e-12)
 
 [node name="Discard" type="Button" parent="CardSprites"]
@@ -92,5 +126,20 @@ theme_override_font_sizes/font_size = 8
 text = "Discard"
 script = ExtResource("4_m5k3n")
 
+[node name="SlideInAndOut" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3u35h")
+}
+
+[node name="DiscardDelay" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[connection signal="discard_card" from="." to="." method="_on_discard_card"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="button_down" from="CardSprites/Discard" to="." method="_on_discard_button_down"]
+[connection signal="pressed" from="CardSprites/Discard" to="." method="_on_discard_pressed"]
+[connection signal="timeout" from="DiscardDelay" to="." method="_on_discard_delay_timeout"]
+[connection signal="timeout" from="DiscardDelay" to="CardSprites/Discard" method="_on_discard_delay_timeout"]
