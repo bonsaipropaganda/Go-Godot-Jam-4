@@ -31,7 +31,7 @@ func _on_mob_spawn_timer_timeout():
 	match mob_to_spawn:
 		"anger_mob": 
 			for n in anger_rate:
-				if randi() % 1:
+				if roundi(randf()):
 					var mob = PackedScene
 					mob = anger_mob.instantiate()
 					
