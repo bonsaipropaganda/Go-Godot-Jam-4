@@ -4,6 +4,7 @@ extends Node2D
 @export var anger_percent: int
 @export var fear_percent: int
 @export var anger_rate: int
+@export var battle_length: int
 
 @onready var brain = get_node("Brain")
 
@@ -11,11 +12,14 @@ extends Node2D
 func _ready():
 	$mob_spawn_timer.start()
 	Global.camera = $Camera2D
+	
+	$"Battle Timer".wait_time = battle_length
+	$"Battle Timer".start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	$"Battle Timer/Label".text = str($"Battle Timer".wait_time)
 
 
 
