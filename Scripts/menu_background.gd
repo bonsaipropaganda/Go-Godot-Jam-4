@@ -58,7 +58,8 @@ func _on_mob_spawn_timer_timeout():
 					mob.hide_health_bar()
 					add_child(mob)
 					await get_tree().create_timer(12).timeout
-					mob.queue_free()
+					if mob != null:
+						mob.queue_free()
 				else:
 					print("fail")
 				
@@ -82,7 +83,8 @@ func _on_mob_spawn_timer_timeout():
 				mob.hide_health_bar()
 				add_child(mob)
 				await get_tree().create_timer(12).timeout
-				mob.queue_free()
+				if mob != null:
+					mob.queue_free()
 				
 
 func _on_anger_enemy_raise_victory(vp):
