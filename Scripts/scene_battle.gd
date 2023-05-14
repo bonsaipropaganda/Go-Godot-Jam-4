@@ -1,9 +1,19 @@
 extends Node2D
 @export var anger_mob: PackedScene
 @export var fear_mob: PackedScene
+@export var anxiety_mob: PackedScene
+@export var grief_mob: PackedScene
+
 @export var anger_percent: int
 @export var fear_percent: int
+@export var anxiety_percent: int
+@export var grief_percent: int
+
 @export var anger_rate: int
+@export var fear_rate: int
+@export var anxiety_rate: int
+@export var grief_rate: int
+
 @export var total_victory_score: int
 @export var victory_multiplier: int
 @export var static_path : PackedScene
@@ -38,34 +48,81 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):	
-	if Input.is_action_just_pressed("test_button"):
-		print("test button")
-		get_tree().change_scene_to_file("res://Scenes/scene_overworld.tscn")
-
+	pass
 
 func _on_mob_spawn_timer_timeout():
-	
-	var mob_to_spawn = ""
-
-	if (randi() % 100 + 1) <= anger_percent:
-		mob_to_spawn = "anger_mob"
-	else:
-		mob_to_spawn = "fear_mob"
-	
-	match mob_to_spawn:
-		"anger_mob": 
-			for n in anger_rate:
-				if roundi(randf()):
+	if not Global.win:
+		var mob_to_spawn = ""
+		var spawn_percent = (randi() % 100 + 1)
+		if  spawn_percent <= anger_percent:
+			mob_to_spawn = "anger_mob"
+		elif spawn_percent <= fear_percent:
+			mob_to_spawn = "fear_mob"
+		elif spawn_percent <= anxiety_percent:
+			mob_to_spawn = "anxiety_mob"
+		else:
+			mob_to_spawn = "grief_mob"
+			
+		match mob_to_spawn:
+			"anger_mob": 
+				for n in anger_rate:
+					if roundi(randf()):
+						var mob = PackedScene
+						mob = anger_mob.instantiate()
+						
+						# Choose a random location on Path2D.
+						var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+						mob_spawn_location.progress_ratio = randf()
+			
+						# Set the mob's position to a random location on the spawn path
+						mob.position = mob_spawn_location.position
+			
+						# Choose the velocity for the mob.
+						mob.velocity = mob.global_position.direction_to(brain.global_position)
+						print("spawn " + mob_to_spawn + " " + str(n))
+						
+						# Connect the mob's victory signal
+						mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+						
+						# Spawn the mob by adding it to the Main scene.
+						add_child(mob)
+					else:
+						print("fail")
+					
+			"fear_mob":
+				for n in (Global.more_fear + 1):
 					var mob = PackedScene
-					mob = anger_mob.instantiate()
+					mob = fear_mob.instantiate()
 					
 					# Choose a random location on Path2D.
 					var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
 					mob_spawn_location.progress_ratio = randf()
-		
+
 					# Set the mob's position to a random location on the spawn path
 					mob.position = mob_spawn_location.position
-		
+
+					# Choose the velocity for the mob.
+					mob.velocity = mob.global_position.direction_to(brain.global_position)
+					print("spawn " + mob_to_spawn + " " + str(n))
+					
+					# Connect the mob's victory signal
+					mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+						
+					# Spawn the mob by adding it to the Main scene.
+					add_child(mob)
+					
+			"anxiety_mob":
+				for n in (Global.more_fear + 1):
+					var mob = PackedScene
+					mob = anxiety_mob.instantiate()
+					
+					# Choose a random location on Path2D.
+					var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+					mob_spawn_location.progress_ratio = randf()
+
+					# Set the mob's position to a random location on the spawn path
+					mob.position = mob_spawn_location.position
+
 					# Choose the velocity for the mob.
 					mob.velocity = mob.global_position.direction_to(brain.global_position)
 					print("spawn " + mob_to_spawn + " " + str(n))
@@ -75,31 +132,42 @@ func _on_mob_spawn_timer_timeout():
 					
 					# Spawn the mob by adding it to the Main scene.
 					add_child(mob)
-				else:
-					print("fail")
-				
-		"fear_mob":
-			for n in (Global.more_fear + 1):
-				var mob = PackedScene
-				mob = fear_mob.instantiate()
-				
-				# Choose a random location on Path2D.
-				var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
-				mob_spawn_location.progress_ratio = randf()
+					
+			"grief_mob":
+				for n in grief_rate:
+					if roundi(randf()):
+						var mob = PackedScene
+						mob = grief_mob.instantiate()
+						
+						# Choose a random location on Path2D.
+						var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+						mob_spawn_location.progress_ratio = randf()
 
-				# Set the mob's position to a random location on the spawn path
-				mob.position = mob_spawn_location.position
+						# Set the mob's position to a random location on the spawn path
+						mob.position = mob_spawn_location.position
 
-				# Choose the velocity for the mob.
-				mob.velocity = mob.global_position.direction_to(brain.global_position)
-				print("spawn " + mob_to_spawn + " " + str(n))
-				
-				# Spawn the mob by adding it to the Main scene.
-				add_child(mob)
+						# Choose the velocity for the mob.
+						mob.velocity = mob.global_position.direction_to(brain.global_position)
+						print("spawn " + mob_to_spawn + " " + str(n))
+						
+						# Connect the mob's victory signal
+						mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+						
+						# Spawn the mob by adding it to the Main scene.
+						add_child(mob)
 
 func _on_anger_enemy_raise_victory(vp):
 	if victory_score >= total_victory_score:
-		Global.win = true
-		get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
-	
+		fade_to_win()
 	victory_score += vp
+
+func fade_to_win():
+	if not Global.win:
+		Global.win = true
+		get_tree().call_group("card","remove_card_effect")
+		$FadeToWin.show()
+		$FadeToWin/FadetoWhite.play("fade to white")
+		$FadeToWin/WinIntro.play()
+
+func _on_win_intro_finished():
+	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")

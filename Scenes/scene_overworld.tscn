@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cbal2sadnl3d1"]
+[gd_scene load_steps=27 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6lvoe"]
 [ext_resource type="Script" path="res://Scripts/scene_overworld.gd" id="1_b0n6f"]

@@ -58,6 +58,13 @@ func _ready():
 		Global.deck.shuffle()
 	
 	#ADD CARDS TO HAND
+	#If cards in hand, add them into deck and shuffle
+	if Global.hand != []:
+		for n in Global.hand.size():
+			Global.deck.append(Global.hand.pop_front())
+		Global.deck.shuffle()
+	
+	#Add cards from top of deck to hand according to hand size
 	if Global.deck.size() > 0:
 		for n in Global.hand_size:
 			if Global.hand.size() < Global.hand_size:

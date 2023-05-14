@@ -16,25 +16,7 @@ func _process(_delta):
 
 func _on_area_entered(area):
 	if(area.is_in_group("enemy")) and not area.dead and not lose:
-		$BrainHit.play()
-		$"..".animation = "hit"
-		# shake(duration, frequency, amplitude):
-		Global.camera.shake(0.25,10,5)
-		if $"../../..".victory_score <= (-1 * $"../../..".total_victory_score):
-			
-			
-			var static_effect = static_path.instantiate()
-			$"../../../Camera2D".add_child(static_effect)
-			
-			$Fade_In.play("fade in lose")
-			$LoseSoundINitial.play()
-			$LoseSound.play()
-			$LoseContinue.play()
-			$"../../../TryAgain".visible = true
-			print("LOSE!")
-			lose = true
-			
-		$"../../..".victory_score -= $"../../..".victory_multiplier
+		take_damage()
 		area.queue_free()
 
 
@@ -46,3 +28,25 @@ func _on_animated_sprite_2d_animation_looped():
 
 func _on_lose_continue_finished():
 	$LoseContinue.play()
+
+func take_damage():
+	
+	if $"../../..".victory_score <= (-1 * $"../../..".total_victory_score):
+			
+			
+		var static_effect = static_path.instantiate()
+		$"../../../Camera2D".add_child(static_effect)
+		
+		$Fade_In.play("fade in lose")
+		$LoseSoundINitial.play()
+		$LoseSound.play()
+		$LoseContinue.play()
+		$"../../../TryAgain".visible = true
+		print("LOSE!")
+		lose = true
+		
+	$BrainHit.play()
+	$"..".animation = "hit"
+	# shake(duration, frequency, amplitude):
+	Global.camera.shake(0.25,10,5)
+	$"../../..".victory_score -= $"../../..".victory_multiplier

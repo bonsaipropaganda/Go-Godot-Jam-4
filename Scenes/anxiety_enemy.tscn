@@ -1,10 +1,14 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3xql63rwlrfq"]
+[gd_scene load_steps=31 format=3 uid="uid://b3xql63rwlrfq"]
 
-[ext_resource type="Script" path="res://Scripts/anger_enemy.gd" id="1_2ux4d"]
+[ext_resource type="Script" path="res://Scenes/anxiety_enemy.gd" id="1_bjg8m"]
 [ext_resource type="Texture2D" uid="uid://dnm8irq0r8a46" path="res://Art/enemiesmonsters3.png" id="2_2ev6h"]
-[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_a0kkf"]
+[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="2_j0hiv"]
 [ext_resource type="AudioStream" uid="uid://caa6xgwphe7cj" path="res://Sound/anger_death.wav" id="4_ti27o"]
 [ext_resource type="AudioStream" uid="uid://84clhngy0uxp" path="res://Sound/anger_hit.wav" id="5_gxgfq"]
+[ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="7_6e4rv"]
+[ext_resource type="AudioStream" uid="uid://5vcdqkb28dxj" path="res://Sound/lose_initial.mp3" id="8_ba4v3"]
+[ext_resource type="AudioStream" uid="uid://c70j0e5senpug" path="res://Sound/LoseSound.mp3" id="9_86fnu"]
+[ext_resource type="AudioStream" uid="uid://dso801clkttbv" path="res://Sound/Lose_Continued.mp3" id="10_3qbrj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3sr7k"]
 atlas = ExtResource("2_2ev6h")
@@ -144,13 +148,122 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh72f"]
 radius = 9.05539
 
-[node name="AngerEnemy" type="Area2D" groups=["enemy"]]
+[sub_resource type="Animation" id="Animation_d048c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../FadeOut:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../BattleTheme:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Static_Video:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../TryAgain:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eai4l"]
+resource_name = "fade in lose"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../FadeOut:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../BattleTheme:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -77.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Static_Video:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.0784314)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../TryAgain:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmba6"]
+_data = {
+"RESET": SubResource("Animation_d048c"),
+"fade in lose": SubResource("Animation_eai4l")
+}
+
+[node name="AnxietyEnemy" type="Area2D"]
 z_index = 10
 collision_mask = 0
-script = ExtResource("1_2ux4d")
+script = ExtResource("1_bjg8m")
 start_speed = 10
-max_health = 100
-health_height = 2
+victory_multiplier = 5
+static_path = ExtResource("2_j0hiv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u6m1n")
@@ -162,21 +275,6 @@ frame_progress = 0.743054
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_vh72f")
 
-[node name="HealthBar" type="ColorRect" parent="."]
-offset_top = -12.0
-offset_right = 20.0
-offset_bottom = -10.0
-size_flags_horizontal = 4
-color = Color(1, 0, 0, 1)
-script = ExtResource("3_a0kkf")
-metadata/_edit_group_ = true
-
-[node name="RemainingHealth" type="ColorRect" parent="HealthBar"]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 2.0
-color = Color(0, 1, 0, 1)
-
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ti27o")
 volume_db = -10.0
@@ -184,6 +282,26 @@ volume_db = -10.0
 [node name="Damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_gxgfq")
 volume_db = -10.0
+
+[node name="LoseFadeOutTimer" type="Timer" parent="."]
+
+[node name="BrainHit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_6e4rv")
+volume_db = -5.0
+
+[node name="LoseSoundINitial" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_ba4v3")
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_86fnu")
+
+[node name="Fade_In" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fmba6")
+}
+
+[node name="LoseContinue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_3qbrj")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

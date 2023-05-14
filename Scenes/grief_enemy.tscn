@@ -1,10 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://denlrvpus5ixo"]
+[gd_scene load_steps=23 format=3 uid="uid://denlrvpus5ixo"]
 
-[ext_resource type="Script" path="res://Scripts/anger_enemy.gd" id="1_r54be"]
+[ext_resource type="Script" path="res://Scenes/grief_enemy.gd" id="1_6i651"]
+[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="2_8i0pq"]
 [ext_resource type="Texture2D" uid="uid://dnm8irq0r8a46" path="res://Art/enemiesmonsters3.png" id="2_vy630"]
-[ext_resource type="Script" path="res://Scripts/HealthBar.gd" id="3_yr04m"]
-[ext_resource type="AudioStream" uid="uid://caa6xgwphe7cj" path="res://Sound/anger_death.wav" id="4_6weh7"]
-[ext_resource type="AudioStream" uid="uid://84clhngy0uxp" path="res://Sound/anger_hit.wav" id="5_ldmt4"]
+[ext_resource type="AudioStream" uid="uid://dte4p16vs4ctb" path="res://Sound/griefhit.wav" id="4_60guv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_edkhy"]
 atlas = ExtResource("2_vy630")
@@ -144,14 +143,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_vh72f"]
 radius = 9.05539
 
-[node name="AngerEnemy" type="Area2D" groups=["enemy"]]
+[node name="Grief_Enemy" type="Area2D" groups=["enemy"]]
 z_index = 10
 collision_mask = 0
-script = ExtResource("1_r54be")
+script = ExtResource("1_6i651")
 start_speed = 10
-max_health = 100
-health_height = 2
-victory_multiplier = 5
+victory_multiplier = 10
+static_path = ExtResource("2_8i0pq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u6m1n")
@@ -163,30 +161,9 @@ frame_progress = 0.852932
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_vh72f")
 
-[node name="HealthBar" type="ColorRect" parent="."]
-offset_top = -12.0
-offset_right = 20.0
-offset_bottom = -10.0
-size_flags_horizontal = 4
-color = Color(1, 0, 0, 1)
-script = ExtResource("3_yr04m")
-metadata/_edit_group_ = true
-
-[node name="RemainingHealth" type="ColorRect" parent="HealthBar"]
-layout_mode = 0
-offset_right = 20.0
-offset_bottom = 2.0
-color = Color(0, 1, 0, 1)
-
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_6weh7")
-volume_db = -10.0
-
-[node name="Damage" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_ldmt4")
-volume_db = -10.0
+stream = ExtResource("4_60guv")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="finished" from="Death" to="." method="_on_death_finished"]

@@ -39,10 +39,18 @@ func _ready():
 	
 	if Global.win:
 		$CardSprites/Discard.queue_free()
+		#$SlideInAndOut.animation = "float"
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	#ON WIN SCREEN - If clicked card, remove card from hand go to main scene
+	if Global.win and Input.is_action_just_pressed("left_click") and description_created:
+		print("clicked!")
+		#REMOVE CARD FROM HAND
+		Global.hand.pop_at(card_slot)
+		Global.win = false
+		get_tree().call_group("card","remove_card_effect")
+		get_tree().change_scene_to_file("res://Scenes/scene_overworld.tscn")
 
 func _on_mouse_entered():
 	$CardSprites.frame = 1
@@ -61,23 +69,24 @@ func _on_mouse_exited():
 
 
 func _on_discard_pressed():
-	emit_signal("discard_card",card_slot)
-	
-	#REMOVE EFFECT OF CARD
-	match value:
-		"more_health":
-			Global.more_health -= 1; # increases health of mobs by 25%
-		"more_speed":
-			Global.more_speed -= 1; # increases speed of mobs by 25%
-		"more_anger":
-			Global.more_anger -= 1; # increases anger spawn rate by 25%
-			
-	print("discared!")
-	$CardSprites/Discard.hide()
-	var tween = get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_EXPO)
-	tween.tween_property(self, "position", deck_position, 0.5)
-	tween.tween_callback(self.queue_free)
+	if not Global.win:
+		emit_signal("discard_card",card_slot)
+		
+		#REMOVE EFFECT OF CARD
+		match value:
+			"more_health":
+				Global.more_health -= 1; # increases health of mobs by 25%
+			"more_speed":
+				Global.more_speed -= 1; # increases speed of mobs by 25%
+			"more_anger":
+				Global.more_anger -= 1; # increases anger spawn rate by 25%
+				
+		print("discared!")
+		$CardSprites/Discard.hide()
+		var tween = get_tree().create_tween()
+		tween.set_trans(Tween.TRANS_EXPO)
+		tween.tween_property(self, "position", deck_position, 0.5)
+		tween.tween_callback(self.queue_free)
 
 
 func _on_discard_delay_timeout():
@@ -91,3 +100,15 @@ func _on_discard_delay_timeout():
 		"more_anger":
 			Global.more_anger += 1; # increases anger spawn rate by 25%
 			$CardSprites.set_animation("more_anger")
+			
+func remove_card_effect():
+	#REMOVE EFFECT OF CARD
+	match value:
+		"more_health":
+			Global.more_health -= 1; # increases health of mobs by 25%
+		"more_speed":
+			Global.more_speed -= 1; # increases speed of mobs by 25%
+		"more_anger":
+			Global.more_anger -= 1; # increases anger spawn rate by 25%
+			
+	print("effect removed")

@@ -42,7 +42,7 @@ func _process(delta):
 			hide()
 
 func _input(event):
-	if mouse_in and event is InputEventMouseButton and event.is_pressed():
+	if mouse_in and event is InputEventMouseButton and event.is_pressed() and not Global.win:
 		mouse_held = true
 		print("pressed")
 	elif mouse_held and mouse_in and event is InputEventMouseButton and not event.is_pressed():

@@ -37,7 +37,7 @@ func _process(delta):
 	position += velocity * delta * speed
 
 func _input(event):
-	if mouse_in and event is InputEventMouseButton and event.pressed and not $Death.playing:
+	if mouse_in and event is InputEventMouseButton and event.pressed and not $Death.playing and not Global.win:
 		print(health)
 		$HealthBar/RemainingHealth.size = Vector2(health_bar_size * (health-Global.attackDamage) / max_health,health_height)
 		print("hit!")

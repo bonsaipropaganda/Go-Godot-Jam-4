@@ -9,4 +9,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#MOVE VICTORYBAR ACCORDING TO HEALTH
-	position.x = ($"../..".victory_score * 60) / $"../..".total_victory_score
+	position.x = ($"../..".victory_score * 70) / $"../..".total_victory_score

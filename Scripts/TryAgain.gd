@@ -12,9 +12,11 @@ func _process(delta):
 
 
 func _on_yes_pressed():
+	get_tree().call_group("card","remove_card_effect")
 	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 	
 
 
 func _on_no_pressed():
+	get_tree().call_group("card","remove_card_effect")
 	get_tree().change_scene_to_file("res://Scenes/scene_overworld.tscn")
