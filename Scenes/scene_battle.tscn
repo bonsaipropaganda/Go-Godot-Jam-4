@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://xumdtd5r0j3c"]
+[gd_scene load_steps=31 format=3 uid="uid://xumdtd5r0j3c"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
 [ext_resource type="PackedScene" uid="uid://c5lkh2jiblpud" path="res://Scenes/anger_enemy.tscn" id="2_lcvla"]
 [ext_resource type="PackedScene" uid="uid://d34d7la0sj61k" path="res://Scenes/fear_enemy.tscn" id="2_q6vyy"]
 [ext_resource type="Script" path="res://Scripts/Brain.gd" id="2_waonk"]
+[ext_resource type="PackedScene" uid="uid://cv207cpg78ftu" path="res://Scenes/static_video_in_battle.tscn" id="4_aqiwl"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_c6vyn"]
 [ext_resource type="Script" path="res://Scripts/BrainCollision.gd" id="5_cq4gu"]
 [ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="6_eko2p"]
@@ -190,6 +191,7 @@ fear_percent = 20
 anger_rate = 1
 total_victory_score = 65
 victory_multiplier = 5
+static_path = ExtResource("4_aqiwl")
 
 [node name="Back Background" type="ColorRect" parent="."]
 offset_left = -185.0
@@ -215,7 +217,9 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+rotation = 6.28319
+ignore_rotation = false
+zoom = Vector2(10, 10)
 script = ExtResource("4_c6vyn")
 
 [node name="ResetCam" type="Timer" parent="Camera2D"]
