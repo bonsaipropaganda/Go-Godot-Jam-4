@@ -29,7 +29,8 @@ func next_phrase():
 		# if there aren't any dialog box closes
 		
 		#SAVE OVERWORLD STATUS
-		Global.overworld_save = get_tree().get_root()
+		var back_to_scene = PackedScene.new()
+		#Global.overworld_save =
 		queue_free()
 		return
 		

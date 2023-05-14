@@ -19,6 +19,7 @@ var dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite2D.animation = str((randi() % 4) + 1)
 	$AnimatedSprite2D.play()
 	$HealthBar.size = Vector2(health_bar_size,health_height)
 	$HealthBar.position -= Vector2(health_bar_size/2,0)

@@ -23,7 +23,7 @@ var speed_multiplier = 0.25
 var health_multiplier = 0.25
 
 #OVERWORLD SAVE USED FOR TRANSITIONING INTO BATTLE
-var overworld_save = null
+var overworld_save : PackedScene
 
 
 func _ready() -> void:

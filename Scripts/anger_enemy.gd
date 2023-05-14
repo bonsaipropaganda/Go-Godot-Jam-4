@@ -23,6 +23,7 @@ var dead = false
 signal raise_victory
 
 func _ready():
+	$AnimatedSprite2D.animation = str((randi() % 4) + 1)
 	$AnimatedSprite2D.play()
 	max_health = health
 	$HealthBar.size = Vector2(health_bar_size,health_height)
