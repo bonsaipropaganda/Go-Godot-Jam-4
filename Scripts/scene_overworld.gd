@@ -47,6 +47,7 @@ func _process(delta):
 	elif Global.last_talked_to == "HoodGuy":
 		Global.go_to_battle = false
 		$Door4.open = true
+		$door_open.play()
 
 
 func _on_transition_timer_timeout():

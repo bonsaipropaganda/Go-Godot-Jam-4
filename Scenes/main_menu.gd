@@ -13,6 +13,9 @@ func _process(delta: float) -> void:
 
 
 func _on_button_pressed() -> void:
+	$CanvasLayer/ColorRect/AnimationPlayer.play("fadeout")
+	$music.stop()
+	$CanvasLayer/ColorRect/AudioStreamPlayer2D.play()
 	$CanvasLayer/Click.play()
-	await get_tree().create_timer(.5).timeout
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_packed(gameplay_scene)

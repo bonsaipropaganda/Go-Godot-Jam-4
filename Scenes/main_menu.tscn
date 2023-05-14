@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://q0mdyvrfvie4"]
+[gd_scene load_steps=19 format=3 uid="uid://q0mdyvrfvie4"]
 
 [ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_28d5v"]
 [ext_resource type="PackedScene" path="res://Scenes/menu_background.tscn" id="1_fi6g8"]
@@ -11,9 +11,46 @@
 [ext_resource type="Texture2D" uid="uid://ck25ern1stk0a" path="res://Art/menu/start_normal.png" id="6_y3p4c"]
 [ext_resource type="PackedScene" uid="uid://denlrvpus5ixo" path="res://Scenes/grief_enemy.tscn" id="7_c36x0"]
 [ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="8_rgq36"]
+[ext_resource type="AudioStream" uid="uid://1molxxgeoacv" path="res://Sound/transition.wav" id="9_luk40"]
 [ext_resource type="AudioStream" uid="uid://bvri8ynd72e8h" path="res://Sound/click-button.mp3" id="9_npg6a"]
 [ext_resource type="AudioStream" uid="uid://bf1x66h21i6nd" path="res://Sound/menu.wav" id="10_hdort"]
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="10_km50c"]
+
+[sub_resource type="Animation" id="Animation_svikv"]
+resource_name = "fadeout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ql5cg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b67le"]
+_data = {
+"RESET": SubResource("Animation_ql5cg"),
+"fadeout": SubResource("Animation_svikv")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -42,6 +79,23 @@ total_victory_score = 10000
 static_path = ExtResource("8_rgq36")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 103
+offset_left = -189.0
+offset_top = -112.0
+offset_right = 1494.0
+offset_bottom = 865.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_b67le")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasLayer/ColorRect"]
+stream = ExtResource("9_luk40")
 
 [node name="Button" type="TextureButton" parent="CanvasLayer"]
 anchors_preset = -1
