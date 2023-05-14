@@ -10,6 +10,13 @@ var dead = false
 var show_debug_ui = false
 var camera
 
+#DECK STUFF
+#VARIABLES
+var hand_size = 4
+var deck = []
+var hand = []
+var discard = []
+
 #GLOBAL CARD EFFECT VARIABLES
 var more_enemy = 0
 var more_health = 0

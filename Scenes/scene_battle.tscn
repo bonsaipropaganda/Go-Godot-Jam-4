@@ -308,6 +308,7 @@ victory_multiplier = 5
 static_path = ExtResource("4_aqiwl")
 
 [node name="FadeOut" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0)
 z_index = 100
 offset_left = -197.0
