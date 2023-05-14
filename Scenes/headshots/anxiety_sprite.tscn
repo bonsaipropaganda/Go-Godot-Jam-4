@@ -32,6 +32,6 @@ animations = [{
 }]
 
 [node name="anger_sprite" type="AnimatedSprite2D"]
-position = Vector2(0, -13)
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_wgv73")
 autoplay = "default"

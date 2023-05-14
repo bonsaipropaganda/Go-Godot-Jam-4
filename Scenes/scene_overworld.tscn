@@ -4296,7 +4296,6 @@ scale = Vector2(1.25, 1.25)
 position = Vector2(123, -2)
 rotation = 3.14159
 scale = Vector2(1.25, 1.25)
-open = true
 
 [node name="Door3" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(-1.19209e-07, -93)
