@@ -33,3 +33,36 @@ scale = Vector2(5, 5)
 texture_normal = ExtResource("4_uf7pd")
 texture_pressed = ExtResource("5_c5bp8")
 texture_hover = ExtResource("6_y3p4c")
+
+[node name="MusicLabel" type="Label" parent="CanvasLayer"]
+offset_left = 19.0
+offset_top = 680.0
+offset_right = 233.0
+offset_bottom = 717.0
+theme_override_font_sizes/font_size = 24
+text = "Musician: rwxc909"
+
+[node name="ArtLabel" type="Label" parent="CanvasLayer"]
+offset_left = 21.0
+offset_top = 650.0
+offset_right = 179.0
+offset_bottom = 687.0
+theme_override_font_sizes/font_size = 24
+text = "Artist: Olivalu"
+
+[node name="LeadProgrammer" type="Label" parent="CanvasLayer"]
+offset_left = 1051.0
+offset_top = 612.0
+offset_right = 1267.0
+offset_bottom = 686.0
+theme_override_font_sizes/font_size = 24
+text = "Lead Programmer: 
+Brandloose"
+
+[node name="bonsai" type="Label" parent="CanvasLayer"]
+offset_left = 1027.0
+offset_top = 678.0
+offset_right = 1265.0
+offset_bottom = 715.0
+theme_override_font_sizes/font_size = 24
+text = "Programmer: bonsai"
