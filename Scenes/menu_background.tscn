@@ -1,0 +1,325 @@
+[gd_scene load_steps=28 format=3 uid="uid://c0uypagwnwc8a"]
+
+[ext_resource type="Script" path="res://Scenes/menu_background.gd" id="1_fa74u"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_pyxrl"]
+[ext_resource type="Script" path="res://Scripts/Brain.gd" id="5_7qbvt"]
+[ext_resource type="Texture2D" uid="uid://bs36g5a1nk6vq" path="res://Art/NewBrain.png" id="6_yten0"]
+[ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="7_low00"]
+[ext_resource type="Script" path="res://Scripts/BrainCollision.gd" id="8_ue0ov"]
+[ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="9_4yl0f"]
+[ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="10_sxdsp"]
+[ext_resource type="PackedScene" uid="uid://ci7kcqcdce5ul" path="res://Scenes/player_deck.tscn" id="11_yrujj"]
+[ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="12_6gx5m"]
+[ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="13_tkf3x"]
+[ext_resource type="Texture2D" uid="uid://rm0ddq8t3ahu" path="res://Art/battle_bar.png" id="14_do1l6"]
+[ext_resource type="Script" path="res://Scripts/VictoryMarker.gd" id="15_u0jbc"]
+
+[sub_resource type="Animation" id="Animation_fbc4v"]
+resource_name = "Flashing Background"
+length = 0.71
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0htjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oine5"]
+_data = {
+"Flashing Background": SubResource("Animation_fbc4v"),
+"RESET": SubResource("Animation_0htjr")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xes8k"]
+atlas = ExtResource("6_yten0")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeqqs"]
+atlas = ExtResource("6_yten0")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x4vr"]
+atlas = ExtResource("6_yten0")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4565u"]
+atlas = ExtResource("6_yten0")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8xai1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xes8k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeqqs")
+}],
+"loop": true,
+"name": &"brain",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_low00")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x4vr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4565u")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4agu3"]
+radius = 11.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_fmgw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gkxyt"]
+resource_name = "pulse"
+length = 0.71
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 0.000601146),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2lw86"]
+resource_name = "run away"
+length = 8.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(58, 0), Vector2(1, -65), Vector2(-95, 0), Vector2(-1, 68)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_36ih4"]
+_data = {
+"RESET": SubResource("Animation_fmgw5"),
+"pulse": SubResource("Animation_gkxyt"),
+"run away": SubResource("Animation_2lw86")
+}
+
+[sub_resource type="Curve2D" id="Curve2D_4neny"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -135, 0, 0, 0, 0, 129, -88, 0, 0, 0, 0, 144, 0, 0, 0, 0, 0, 129, 89, 0, 0, 0, 0, 1, 128, 0, 0, 0, 0, -126, 90, 0, 0, 0, 0, -142, 1, 0, 0, 0, 0, -126, -87, 0, 0, 0, 0, 0, -135)
+}
+point_count = 9
+
+[node name="MenuBackground" type="Node2D"]
+script = ExtResource("1_fa74u")
+
+[node name="Back Background" type="ColorRect" parent="."]
+offset_left = -185.0
+offset_top = -111.0
+offset_right = 181.0
+offset_bottom = 123.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = -160.0
+offset_top = -90.0
+offset_right = 157.0
+offset_bottom = 91.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="FlashingBackground" type="AnimationPlayer" parent="Background"]
+autoplay = "Flashing Background"
+libraries = {
+"": SubResource("AnimationLibrary_oine5")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+script = ExtResource("4_pyxrl")
+
+[node name="ResetCam" type="Timer" parent="Camera2D"]
+wait_time = 0.25
+
+[node name="Brain" type="AnimatableBody2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("5_7qbvt")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Brain"]
+sprite_frames = SubResource("SpriteFrames_8xai1")
+animation = &"brain"
+autoplay = "brain"
+
+[node name="BrainCollision" type="Area2D" parent="Brain/AnimatedSprite2D"]
+script = ExtResource("8_ue0ov")
+
+[node name="BrainHit" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+stream = ExtResource("9_4yl0f")
+volume_db = -5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_4agu3")
+
+[node name="Pulsing Brain" type="AnimationPlayer" parent="Brain"]
+autoplay = "pulse"
+libraries = {
+"": SubResource("AnimationLibrary_36ih4")
+}
+
+[node name="MobPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4neny")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(0, -135)
+rotation = 0.349393
+
+[node name="mob_spawn_timer" type="Timer" parent="."]
+
+[node name="Foreground" type="Sprite2D" parent="."]
+z_index = 15
+position = Vector2(9.53674e-07, 0)
+scale = Vector2(0.925, 1)
+texture = ExtResource("10_sxdsp")
+
+[node name="ColorRect3" type="ColorRect" parent="Foreground"]
+offset_left = -173.0
+offset_top = -90.0
+offset_right = -137.0
+offset_bottom = 90.0
+color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Foreground"]
+offset_left = -150.0
+offset_top = -90.0
+offset_right = -128.0
+offset_bottom = 90.0
+color = Color(0.619608, 0.0431373, 0.0588235, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Foreground"]
+offset_left = 127.568
+offset_top = -90.0
+offset_right = 149.568
+offset_bottom = 90.0
+color = Color(0.619608, 0.0431373, 0.0588235, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Foreground"]
+offset_left = 156.0
+offset_top = -90.0
+offset_right = 175.0
+offset_bottom = 90.0
+color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[node name="Player_Deck" parent="." instance=ExtResource("11_yrujj")]
+
+[node name="BattleTheme" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_6gx5m")
+autoplay = true
+
+[node name="BattleTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="Label" type="Label" parent="BattleTimer"]
+visible = false
+offset_left = -20.0
+offset_top = -87.0
+offset_right = 20.0
+offset_bottom = -64.0
+theme_override_fonts/font = ExtResource("13_tkf3x")
+theme_override_font_sizes/font_size = 12
+text = "0:00"
+horizontal_alignment = 1
+
+[node name="VictoryBar" type="Sprite2D" parent="."]
+z_index = 40
+position = Vector2(0, -6)
+texture = ExtResource("14_do1l6")
+
+[node name="VictoryMarker" type="ColorRect" parent="VictoryBar"]
+offset_left = -1.0
+offset_top = -77.0
+offset_right = 1.0
+offset_bottom = -62.0
+script = ExtResource("15_u0jbc")
+
+[connection signal="timeout" from="Camera2D/ResetCam" to="Camera2D" method="_on_reset_cam_timeout"]
+[connection signal="animation_looped" from="Brain/AnimatedSprite2D" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_animated_sprite_2d_animation_looped"]
+[connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_area_entered"]
+[connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_body_entered"]
+[connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
