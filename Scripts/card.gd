@@ -9,7 +9,7 @@ var description = ""
 var description_box = PackedScene
 var description_created = false
 
-@onready var deck_position = get_node("/root/Scene_Battle/Player_Deck/Deck").position
+@onready var deck_position = Vector2(142,0)
 
 #SIGNAL FOR CARD SLOT DISCARD
 signal discard_card(card_slot)
@@ -36,6 +36,9 @@ func _ready():
 	var tween = get_tree().create_tween()
 	tween.set_trans(Tween.TRANS_EXPO)
 	tween.tween_property(self, "position", start_position, 0.5)
+	
+	if Global.win:
+		$CardSprites/Discard.queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

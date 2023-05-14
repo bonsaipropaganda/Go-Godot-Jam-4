@@ -27,4 +27,4 @@ theme_override_font_sizes/font_size = 8
 text = "Choose a card to remove from your deck:"
 
 [node name="Player_Deck" parent="." instance=ExtResource("2_y3tk4")]
-position = Vector2(-6, 8)
+position = Vector2(-6, 19)

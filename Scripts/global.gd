@@ -17,6 +17,8 @@ var deck = []
 var hand = []
 var discard = []
 
+var win = false
+
 #GLOBAL CARD EFFECT VARIABLES
 var more_enemy = 0
 var more_health = 0

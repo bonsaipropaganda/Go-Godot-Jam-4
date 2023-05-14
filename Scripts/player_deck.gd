@@ -20,6 +20,7 @@ const card_path = preload("res://Scenes/card.tscn")
 @export var card_three_position : Vector2
 @export var card_four_position : Vector2
 @onready var hand_positions = [card_one_position, card_two_position, card_three_position, card_four_position]
+@onready var win_positions = [Vector2(-86,19),Vector2(-36,19),Vector2(36,19),Vector2(86,19)]
 
 #CARD PILE ARRAYS
 #var deck = []
@@ -65,7 +66,10 @@ func _ready():
 	#CREATE CARD NODES TO SCENE
 	for n in Global.hand.size():
 		var new_card = card_path.instantiate()
-		new_card.position = hand_positions[n]
+		if not Global.win:
+			new_card.position = hand_positions[n]
+		else:
+			new_card.position = win_positions[n]
 		new_card.card_slot = n
 		new_card.value = Global.hand[n]
 		new_card.discard_card.connect(_on_card_discard_card)

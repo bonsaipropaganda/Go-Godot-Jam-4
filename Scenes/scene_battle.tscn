@@ -303,7 +303,7 @@ fear_mob = ExtResource("2_q6vyy")
 anger_percent = 80
 fear_percent = 20
 anger_rate = 3
-total_victory_score = 65
+total_victory_score = 10
 victory_multiplier = 5
 static_path = ExtResource("4_aqiwl")
 
