@@ -1,30 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3k4l532ch8sm"]
+[gd_scene load_steps=6 format=3 uid="uid://cdnm35glqy70y"]
 
-[ext_resource type="Texture2D" uid="uid://dgqo0srb7o7np" path="res://Art/headshots_strip3.png" id="1_5ngvx"]
+[ext_resource type="Texture2D" uid="uid://c1cmbh5jv0u8k" path="res://Art/headshots/headshots_strip3.png" id="1_lxvbm"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1xbjn"]
-atlas = ExtResource("1_5ngvx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbydb"]
+atlas = ExtResource("1_lxvbm")
 region = Rect2(0, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eem6i"]
-atlas = ExtResource("1_5ngvx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw1sw"]
+atlas = ExtResource("1_lxvbm")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2un2"]
-atlas = ExtResource("1_5ngvx")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v3vw"]
+atlas = ExtResource("1_lxvbm")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fknsy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1xbjn")
+"texture": SubResource("AtlasTexture_hbydb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eem6i")
+"texture": SubResource("AtlasTexture_bw1sw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s2un2")
+"texture": SubResource("AtlasTexture_8v3vw")
 }],
 "loop": true,
 "name": &"default",
@@ -33,4 +33,3 @@ animations = [{
 
 [node name="anger_headshot" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_fknsy")
-frame_progress = 0.722482

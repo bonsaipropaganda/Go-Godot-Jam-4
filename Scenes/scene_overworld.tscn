@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://vxonjkl1uxu3" path="res://Scenes/door.tscn" id="4_frvsx"]
 [ext_resource type="Texture2D" uid="uid://dy3v06rijtio4" path="res://Art/floorstest1.png" id="5_bop28"]
 [ext_resource type="PackedScene" uid="uid://da6wtt163uf5f" path="res://Scenes/npc.tscn" id="5_stjdd"]
-[ext_resource type="PackedScene" uid="uid://b3k4l532ch8sm" path="res://Scenes/headshots/anger_headshot.tscn" id="9_ya1gk"]
+[ext_resource type="PackedScene" uid="uid://cdnm35glqy70y" path="res://Scenes/headshots/anger_headshot.tscn" id="9_euj35"]
 [ext_resource type="PackedScene" uid="uid://b2x3gjh0ldw76" path="res://Scenes/headshots/anger_sprite.tscn" id="10_ahpxt"]
 [ext_resource type="PackedScene" uid="uid://cirs6ry1xlkpn" path="res://Scenes/headshots/fear_headshot.tscn" id="10_xafev"]
 [ext_resource type="PackedScene" uid="uid://btdc1q573spdf" path="res://Scenes/headshots/anxiety_headshot.tscn" id="11_w5c28"]
@@ -4302,7 +4302,7 @@ texture_filter = 1
 position = Vector2(-23, 385)
 dialog_array = ["WHAT ARE YOU DOING HERE??!!!", "GRAWHHHHHHH!!!!!", "WHY IS MY HEAD ON FIRE?!!", "IT'S YOUR FAULT!!!!!"]
 character_name = "Anger"
-character_picture = ExtResource("9_ya1gk")
+character_picture = ExtResource("9_euj35")
 character_sprite = ExtResource("10_ahpxt")
 
 [node name="Fear Boss" parent="." instance=ExtResource("5_stjdd")]
