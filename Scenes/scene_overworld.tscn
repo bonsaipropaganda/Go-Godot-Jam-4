@@ -1,7 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=27 format=3]
 
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6lvoe"]
-[ext_resource type="Script" path="res://Scenes/scene_overworld.gd" id="1_b0n6f"]
+[ext_resource type="Script" path="res://Scripts/scene_overworld.gd" id="1_b0n6f"]
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild_black.png" id="1_hdaa8"]
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]

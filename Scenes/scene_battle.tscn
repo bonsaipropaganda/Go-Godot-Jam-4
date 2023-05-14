@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://xumdtd5r0j3c"]
+[gd_scene load_steps=39 format=3]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://dso801clkttbv" path="res://Sound/Lose_Continued.mp3" id="13_ebcwm"]
 [ext_resource type="Texture2D" uid="uid://rm0ddq8t3ahu" path="res://Art/battle_bar.png" id="14_gmu6b"]
 [ext_resource type="Script" path="res://Scripts/VictoryMarker.gd" id="15_eix38"]
-[ext_resource type="Script" path="res://Scenes/TryAgain.gd" id="21_8qbga"]
+[ext_resource type="Script" path="res://Scripts/TryAgain.gd" id="21_8qbga"]
 
 [sub_resource type="Animation" id="Animation_fbc4v"]
 resource_name = "Flashing Background"

@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c0uypagwnwc8a"]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource type="Script" path="res://Scenes/menu_background.gd" id="1_fa74u"]
+[ext_resource type="Script" path="res://Scripts/menu_background.gd" id="1_fa74u"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="4_pyxrl"]
 [ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="10_sxdsp"]
 [ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="12_6gx5m"]
