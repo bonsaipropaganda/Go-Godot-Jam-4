@@ -98,4 +98,7 @@ func _on_mob_spawn_timer_timeout():
 				add_child(mob)
 
 func _on_anger_enemy_raise_victory(vp):
+	if victory_score >= total_victory_score:
+		print("WiN!")
+	
 	victory_score += vp

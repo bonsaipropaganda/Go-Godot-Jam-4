@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://xumdtd5r0j3c"]
+[gd_scene load_steps=39 format=3 uid="uid://xumdtd5r0j3c"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
@@ -13,9 +13,14 @@
 [ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="7_y2qjd"]
 [ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="9_l803j"]
 [ext_resource type="PackedScene" uid="uid://ci7kcqcdce5ul" path="res://Scenes/player_deck.tscn" id="10_abq2l"]
+[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="10_y1wla"]
+[ext_resource type="AudioStream" uid="uid://5vcdqkb28dxj" path="res://Sound/lose_initial.mp3" id="11_8s8fe"]
+[ext_resource type="AudioStream" uid="uid://c70j0e5senpug" path="res://Sound/LoseSound.mp3" id="11_67b8t"]
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="13_4naci"]
+[ext_resource type="AudioStream" uid="uid://dso801clkttbv" path="res://Sound/Lose_Continued.mp3" id="13_ebcwm"]
 [ext_resource type="Texture2D" uid="uid://rm0ddq8t3ahu" path="res://Art/battle_bar.png" id="14_gmu6b"]
 [ext_resource type="Script" path="res://Scripts/VictoryMarker.gd" id="15_eix38"]
+[ext_resource type="Script" path="res://Scenes/TryAgain.gd" id="21_8qbga"]
 
 [sub_resource type="Animation" id="Animation_fbc4v"]
 resource_name = "Flashing Background"
@@ -108,6 +113,115 @@ animations = [{
 radius = 11.0
 height = 28.0
 
+[sub_resource type="Animation" id="Animation_eai4l"]
+resource_name = "fade in lose"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../FadeOut:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../BattleTheme:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -77.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Static_Video:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.0784314)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../TryAgain:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d048c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../FadeOut:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../BattleTheme:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../Static_Video:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../TryAgain:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fmba6"]
+_data = {
+"RESET": SubResource("Animation_d048c"),
+"fade in lose": SubResource("Animation_eai4l")
+}
+
 [sub_resource type="Animation" id="Animation_fmgw5"]
 length = 0.001
 tracks/0/type = "value"
@@ -188,10 +302,19 @@ anger_mob = ExtResource("2_lcvla")
 fear_mob = ExtResource("2_q6vyy")
 anger_percent = 80
 fear_percent = 20
-anger_rate = 1
+anger_rate = 3
 total_victory_score = 65
 victory_multiplier = 5
 static_path = ExtResource("4_aqiwl")
+
+[node name="FadeOut" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0)
+z_index = 100
+offset_left = -197.0
+offset_top = -117.0
+offset_right = 206.0
+offset_bottom = 126.0
+color = Color(0, 0, 0, 1)
 
 [node name="Back Background" type="ColorRect" parent="."]
 offset_left = -185.0
@@ -237,6 +360,9 @@ autoplay = "brain"
 
 [node name="BrainCollision" type="Area2D" parent="Brain/AnimatedSprite2D"]
 script = ExtResource("5_cq4gu")
+static_path = ExtResource("10_y1wla")
+
+[node name="LoseFadeOutTimer" type="Timer" parent="Brain/AnimatedSprite2D/BrainCollision"]
 
 [node name="BrainHit" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
 stream = ExtResource("7_y2qjd")
@@ -245,6 +371,20 @@ volume_db = -5.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_4agu3")
+
+[node name="LoseSoundINitial" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+stream = ExtResource("11_8s8fe")
+
+[node name="LoseSound" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+stream = ExtResource("11_67b8t")
+
+[node name="Fade_In" type="AnimationPlayer" parent="Brain/AnimatedSprite2D/BrainCollision"]
+libraries = {
+"": SubResource("AnimationLibrary_fmba6")
+}
+
+[node name="LoseContinue" type="AudioStreamPlayer2D" parent="Brain/AnimatedSprite2D/BrainCollision"]
+stream = ExtResource("13_ebcwm")
 
 [node name="Pulsing Brain" type="AnimationPlayer" parent="Brain"]
 autoplay = "pulse"
@@ -329,10 +469,51 @@ offset_right = 1.0
 offset_bottom = -62.0
 script = ExtResource("15_eix38")
 
+[node name="TryAgain" type="Label" parent="."]
+visible = false
+z_index = 101
+offset_left = -40.0
+offset_top = -17.0
+offset_right = 41.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("13_4naci")
+theme_override_font_sizes/font_size = 12
+text = "Try Again?"
+script = ExtResource("21_8qbga")
+
+[node name="Yes" type="Button" parent="TryAgain"]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 24.0
+offset_right = 35.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("13_4naci")
+theme_override_font_sizes/font_size = 8
+text = "Yes"
+
+[node name="No" type="Button" parent="TryAgain"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 24.0
+offset_right = 89.0
+offset_bottom = 56.0
+theme_override_fonts/font = ExtResource("13_4naci")
+theme_override_font_sizes/font_size = 8
+text = "No
+"
+
+[node name="Static_Video" parent="." instance=ExtResource("10_y1wla")]
+modulate = Color(1, 1, 1, 0)
+z_index = 100
+position = Vector2(15, -6)
+
 [connection signal="timeout" from="Camera2D/ResetCam" to="Camera2D" method="_on_reset_cam_timeout"]
 [connection signal="animation_looped" from="Brain/AnimatedSprite2D" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_area_entered"]
 [connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_body_entered"]
+[connection signal="finished" from="Brain/AnimatedSprite2D/BrainCollision/LoseContinue" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_lose_continue_finished"]
 [connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
+[connection signal="pressed" from="TryAgain/Yes" to="TryAgain" method="_on_yes_pressed"]
