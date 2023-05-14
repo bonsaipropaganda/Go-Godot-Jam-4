@@ -22,8 +22,9 @@ var more_anxiety = 0
 var speed_multiplier = 0.25
 var health_multiplier = 0.25
 
-#OVERWORLD SAVE USED FOR TRANSITIONING INTO BATTLE
-var overworld_save : PackedScene
+#OVERWORLD SAVE USED FOR TRANSITIONING IN AND OUT OF BATTLES
+var go_to_battle = false
+var player_position = Vector2(0,0)
 
 
 func _ready() -> void:

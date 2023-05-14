@@ -15,6 +15,8 @@ var phrase_num = 0
 # this determines whether the current phrase typewriter effect is finished
 var finished = false
 
+signal go_to_battle
+
 func _ready() -> void:
 	# sets the character name, picture, and checks for dialog array
 	$Name.text = character_name
@@ -28,9 +30,8 @@ func next_phrase():
 	if phrase_num >= len(dialog_array):
 		# if there aren't any dialog box closes
 		
-		#SAVE OVERWORLD STATUS
-		var back_to_scene = PackedScene.new()
-		#Global.overworld_save =
+		#SWITCH TO BATTLE - SAVE POSITION
+		Global.go_to_battle = true
 		queue_free()
 		return
 		

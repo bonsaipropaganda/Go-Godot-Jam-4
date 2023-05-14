@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 @onready var previous_input_direction = Vector2(0,0)
 
+func _ready():
+	#SET SAVE DATA FROM COMING BACK FROM BATTLES
+	position = Global.player_position
+
+
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
 	#print(input_direction)

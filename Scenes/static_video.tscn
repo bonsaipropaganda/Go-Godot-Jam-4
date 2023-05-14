@@ -1,0 +1,217 @@
+[gd_scene load_steps=52 format=3 uid="uid://2nqnih7u3krq"]
+
+[ext_resource type="Texture2D" uid="uid://d3h8w88udai1v" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00001.jpg" id="1_eobpb"]
+[ext_resource type="Texture2D" uid="uid://b5uf1mgkh3woj" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00002.jpg" id="2_5v5o2"]
+[ext_resource type="Texture2D" uid="uid://blqr1vv3vf2hv" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00003.jpg" id="3_pd7k4"]
+[ext_resource type="Texture2D" uid="uid://dc4m5ikco5tbp" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00004.jpg" id="4_xiq5b"]
+[ext_resource type="Texture2D" uid="uid://dps6atx6hskon" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00005.jpg" id="5_k83jt"]
+[ext_resource type="Texture2D" uid="uid://dse5yf0d42id0" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00006.jpg" id="6_purrj"]
+[ext_resource type="Texture2D" uid="uid://d2p82tcofm4w7" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00007.jpg" id="7_uql4h"]
+[ext_resource type="Texture2D" uid="uid://cwlftgmighhhc" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00008.jpg" id="8_vsjrh"]
+[ext_resource type="Texture2D" uid="uid://ckerw2jlpcueq" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00009.jpg" id="9_sj6eo"]
+[ext_resource type="Texture2D" uid="uid://c1hyvxf0l71ay" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00010.jpg" id="10_gm1c5"]
+[ext_resource type="Texture2D" uid="uid://djqpq6bwxl1ua" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00011.jpg" id="11_04iqt"]
+[ext_resource type="Texture2D" uid="uid://bg46u10r7ockf" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00012.jpg" id="12_63f1s"]
+[ext_resource type="Texture2D" uid="uid://b5cle22h6ofqc" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00013.jpg" id="13_ks1yu"]
+[ext_resource type="Texture2D" uid="uid://b7fawyq332jab" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00014.jpg" id="14_71fv3"]
+[ext_resource type="Texture2D" uid="uid://xn5sec76rbi3" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00015.jpg" id="15_3le53"]
+[ext_resource type="Texture2D" uid="uid://chu5hms2xdh0f" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00016.jpg" id="16_5hj3x"]
+[ext_resource type="Texture2D" uid="uid://0d0vy2k5o1wm" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00017.jpg" id="17_puam0"]
+[ext_resource type="Texture2D" uid="uid://8qjpouldhdkt" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00018.jpg" id="18_xctw4"]
+[ext_resource type="Texture2D" uid="uid://jihk6tr135oo" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00019.jpg" id="19_i2st6"]
+[ext_resource type="Texture2D" uid="uid://dd2ircicevmbp" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00020.jpg" id="20_alo8a"]
+[ext_resource type="Texture2D" uid="uid://ebb0bwyooce5" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00021.jpg" id="21_w4n11"]
+[ext_resource type="Texture2D" uid="uid://khgpsc1o7k51" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00022.jpg" id="22_j8shv"]
+[ext_resource type="Texture2D" uid="uid://cdu3o15jffh66" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00023.jpg" id="23_syy5a"]
+[ext_resource type="Texture2D" uid="uid://v30et2vctgkt" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00024.jpg" id="24_ie5u2"]
+[ext_resource type="Texture2D" uid="uid://cl4emcuu4em67" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00025.jpg" id="25_uduky"]
+[ext_resource type="Texture2D" uid="uid://sq5yswg4fy1g" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00026.jpg" id="26_syu4s"]
+[ext_resource type="Texture2D" uid="uid://berj0iokrn7rr" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00027.jpg" id="27_okuiu"]
+[ext_resource type="Texture2D" uid="uid://d1p8bct5l3t1c" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00028.jpg" id="28_omcqh"]
+[ext_resource type="Texture2D" uid="uid://b334x05ahaieq" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00029.jpg" id="29_xpvjc"]
+[ext_resource type="Texture2D" uid="uid://7demmts3y0wr" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00030.jpg" id="30_n5fbc"]
+[ext_resource type="Texture2D" uid="uid://dgr0qmyv22cgv" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00031.jpg" id="31_1xhh1"]
+[ext_resource type="Texture2D" uid="uid://lxda1ybfjnvd" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00032.jpg" id="32_51gl5"]
+[ext_resource type="Texture2D" uid="uid://q3hngdcu7mtr" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00033.jpg" id="33_w8c01"]
+[ext_resource type="Texture2D" uid="uid://cjqmywbm8f613" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00034.jpg" id="34_g0dtn"]
+[ext_resource type="Texture2D" uid="uid://ca88vv7q105p4" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00035.jpg" id="35_mvu8l"]
+[ext_resource type="Texture2D" uid="uid://dql82bllmc26d" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00036.jpg" id="36_3a6di"]
+[ext_resource type="Texture2D" uid="uid://cre2q1wdxy765" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00037.jpg" id="37_tsmh6"]
+[ext_resource type="Texture2D" uid="uid://bckga536la0ee" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00038.jpg" id="38_uk8b5"]
+[ext_resource type="Texture2D" uid="uid://b1kegx4uud3s6" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00039.jpg" id="39_l6y57"]
+[ext_resource type="Texture2D" uid="uid://d21bkmu5hffri" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00040.jpg" id="40_kufib"]
+[ext_resource type="Texture2D" uid="uid://knglv8margew" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00041.jpg" id="41_hm0fx"]
+[ext_resource type="Texture2D" uid="uid://bw05xupxsuula" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00042.jpg" id="42_f13r6"]
+[ext_resource type="Texture2D" uid="uid://1ms4ld5hp5su" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00043.jpg" id="43_mlmyo"]
+[ext_resource type="Texture2D" uid="uid://bav11ch7d81k6" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00044.jpg" id="44_3mpdi"]
+[ext_resource type="Texture2D" uid="uid://euwwrs55cgdn" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00045.jpg" id="45_xgd65"]
+[ext_resource type="Texture2D" uid="uid://biqnucyc78tv8" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00046.jpg" id="46_of0wa"]
+[ext_resource type="Texture2D" uid="uid://to1yw1wlgawo" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00047.jpg" id="47_foear"]
+[ext_resource type="Texture2D" uid="uid://b7yor6yruaheh" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00048.jpg" id="48_0gmol"]
+[ext_resource type="Texture2D" uid="uid://bf45tg27rkg3g" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00049.jpg" id="49_16bno"]
+[ext_resource type="Texture2D" uid="uid://daq20bvxo6t4n" path="res://Art/Defect Screen - Glitch Effect Footage Free (online-video-cutter.com) [MConverter.eu]/00050.jpg" id="50_83sxp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ay6sn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eobpb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5v5o2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pd7k4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xiq5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k83jt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_purrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uql4h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vsjrh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_sj6eo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_gm1c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_04iqt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_63f1s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ks1yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_71fv3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_3le53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5hj3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_puam0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xctw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_i2st6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_alo8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_w4n11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_j8shv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_syy5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_ie5u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_uduky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_syu4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_okuiu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_omcqh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_xpvjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_n5fbc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_1xhh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_51gl5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_w8c01")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_g0dtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mvu8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_3a6di")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_tsmh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_uk8b5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_l6y57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_kufib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_hm0fx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_f13r6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_mlmyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_3mpdi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_xgd65")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_of0wa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_foear")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_0gmol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_16bno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_83sxp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[node name="Static_Video" type="AnimatedSprite2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_ay6sn")
+autoplay = "default"
+frame = 2
+frame_progress = 0.906428

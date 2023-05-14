@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=26 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6lvoe"]
+[ext_resource type="Script" path="res://Scenes/scene_overworld.gd" id="1_b0n6f"]
 [ext_resource type="Texture2D" uid="uid://bu734qg4eo78b" path="res://Art/RF_Catacombs_v1.0/mainlevbuild_black.png" id="1_hdaa8"]
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]
@@ -19,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://bciuy2whotcjp" path="res://Sound/MainOveworldMusic.wav" id="17_6r8rw"]
 [ext_resource type="PackedScene" uid="uid://bapep0437nh20" path="res://Scenes/headshots/hood_headshot.tscn" id="18_rdvrv"]
 [ext_resource type="PackedScene" uid="uid://cbniaaw7y8pnp" path="res://Scenes/headshots/hood_sprite.tscn" id="19_banp5"]
+[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="21_rhvqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4252,7 +4254,12 @@ sources/2 = SubResource("TileSetAtlasSource_htikf")
 sources/3 = SubResource("TileSetAtlasSource_q6gxh")
 
 [node name="Scene_Overworld" type="Node2D"]
+script = ExtResource("1_b0n6f")
 metadata/_edit_horizontal_guides_ = []
+
+[node name="TransitionTimer" type="Timer" parent="."]
+
+[node name="TransitionMusic" type="AudioStreamPlayer2D" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -687.0
@@ -4338,6 +4345,10 @@ character_name = "Hood Guy"
 character_picture = ExtResource("18_rdvrv")
 character_sprite = ExtResource("19_banp5")
 
+[node name="Static_Video" parent="." instance=ExtResource("21_rhvqy")]
+position = Vector2(-24, -19)
+
+[connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
 [connection signal="npc_speech" from="Anger Boss" to="CanvasLayer" method="_on_npc_npc_speech"]
 [connection signal="walked_away" from="Anger Boss" to="CanvasLayer" method="_on_npc_walked_away"]
 [connection signal="npc_speech" from="Fear Boss" to="CanvasLayer" method="_on_npc_npc_speech"]
@@ -4348,3 +4359,5 @@ character_sprite = ExtResource("19_banp5")
 [connection signal="walked_away" from="Grief Boss" to="CanvasLayer" method="_on_npc_walked_away"]
 [connection signal="npc_speech" from="HoodGuy" to="CanvasLayer" method="_on_npc_npc_speech"]
 [connection signal="walked_away" from="HoodGuy" to="CanvasLayer" method="_on_npc_walked_away"]
+
+[editable path="Player"]

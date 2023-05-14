@@ -21,7 +21,7 @@ func _ready():
 func _process(_delta):	
 	if Input.is_action_just_pressed("test_button"):
 		print("test button")
-		get_tree().change_scene_to_packed(Global.overworld_save)
+		get_tree().change_scene_to_file("res://Scenes/scene_overworld.tscn")
 
 
 func _on_mob_spawn_timer_timeout():
