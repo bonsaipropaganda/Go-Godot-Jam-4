@@ -60,3 +60,6 @@ func _on_mouse_exited():
 
 func _on_death_finished():
 	queue_free()
+
+func hide_health_bar():
+	$HealthBar.visible = false
