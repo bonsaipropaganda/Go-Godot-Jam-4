@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgjovjn0cwivc"]
+[gd_scene load_steps=11 format=3 uid="uid://dgjovjn0cwivc"]
 
 [ext_resource type="Script" path="res://Scripts/dialog.gd" id="1_scwdk"]
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="2_ia756"]
 [ext_resource type="FontFile" uid="uid://5t0tqlgxv45u" path="res://Art/Fonts/Kenney Pixel.ttf" id="3_4mx3n"]
+[ext_resource type="AudioStream" uid="uid://ipaeayybs3qr" path="res://Sound/type_noise.wav" id="4_1rodh"]
+[ext_resource type="AudioStream" uid="uid://budrc8h5k3qtm" path="res://Sound/type_noise2.wav" id="5_jkjbq"]
+[ext_resource type="AudioStream" uid="uid://03bcc4d1o5rv" path="res://Sound/type_noise3.wav" id="6_8r5qr"]
+[ext_resource type="AudioStream" uid="uid://bbjhcs5lcpew0" path="res://Sound/progress.wav" id="7_w0vay"]
 
 [sub_resource type="Animation" id="Animation_4tlml"]
 resource_name = "Floaty"
@@ -122,3 +126,15 @@ polygon = PackedVector2Array(4, 7, 44, 7, 24, 33, 24, 33)
 libraries = {
 "": SubResource("AnimationLibrary_byycq")
 }
+
+[node name="Type_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_1rodh")
+
+[node name="Type_noise2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_jkjbq")
+
+[node name="Type_noise3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8r5qr")
+
+[node name="progress_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_w0vay")

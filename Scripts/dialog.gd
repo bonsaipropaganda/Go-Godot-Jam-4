@@ -26,6 +26,7 @@ func _ready() -> void:
 
 # plays the next up phrase
 func next_phrase():
+	$progress_noise.play()
 	# checks if there are any phrases left
 	if phrase_num >= len(dialog_array):
 		# if there aren't any dialog box closes
@@ -44,7 +45,10 @@ func next_phrase():
 	# shows one more character after brief pause
 	while $Text.visible_characters < len($Text.text):
 		$Text.visible_characters += 1
-		
+		match ((randi() % 3)+1):
+			1: $Type_noise.play()
+			2: $Type_noise2.play()
+			3: $Type_noise3.play()
 		await get_tree().create_timer(text_speed).timeout
 	
 	finished = true

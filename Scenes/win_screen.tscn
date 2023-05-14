@@ -1,9 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqg4n20hgi25p"]
+[gd_scene load_steps=9 format=3 uid="uid://cqg4n20hgi25p"]
 
 [ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="1_mxgul"]
+[ext_resource type="Script" path="res://Scenes/win_screen.gd" id="1_wsq67"]
 [ext_resource type="PackedScene" uid="uid://ci7kcqcdce5ul" path="res://Scenes/player_deck.tscn" id="2_y3tk4"]
+[ext_resource type="AudioStream" uid="uid://cw7rbonlfj4bs" path="res://Sound/successwinintro.mp3" id="4_p785t"]
+[ext_resource type="AudioStream" uid="uid://dldscifjuwsnr" path="res://Sound/wincontinued.mp3" id="5_h1as3"]
+
+[sub_resource type="Animation" id="Animation_p0116"]
+resource_name = "fadeoutwhite"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xi1af"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53g28"]
+_data = {
+"RESET": SubResource("Animation_xi1af"),
+"fadeoutwhite": SubResource("Animation_p0116")
+}
 
 [node name="win_screen" type="Node2D"]
+script = ExtResource("1_wsq67")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -28,3 +68,25 @@ text = "Choose a card to remove from your deck:"
 
 [node name="Player_Deck" parent="." instance=ExtResource("2_y3tk4")]
 position = Vector2(-6, 19)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 101
+offset_left = -169.0
+offset_top = -97.0
+offset_right = 183.0
+offset_bottom = 117.0
+mouse_filter = 2
+
+[node name="WinIntro" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_p785t")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_53g28")
+}
+
+[node name="WinContinue" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_h1as3")
+
+[connection signal="finished" from="WinIntro" to="." method="_on_win_intro_finished"]
+[connection signal="finished" from="WinContinue" to="." method="_on_win_continue_finished"]

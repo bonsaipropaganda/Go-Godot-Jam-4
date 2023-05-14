@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://xumdtd5r0j3c"]
+[gd_scene load_steps=44 format=3 uid="uid://xumdtd5r0j3c"]
 
 [ext_resource type="Script" path="res://Scripts/scene_battle.gd" id="1_afmc2"]
 [ext_resource type="Texture2D" uid="uid://dcyib66twf1av" path="res://Art/SeekPng.com_brain-png_152490-export.png" id="2_heymf"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Scripts/BrainCollision.gd" id="5_cq4gu"]
 [ext_resource type="PackedScene" uid="uid://denlrvpus5ixo" path="res://Scenes/grief_enemy.tscn" id="5_mnhas"]
 [ext_resource type="Texture2D" uid="uid://dft3dognr243p" path="res://Art/foreground.png" id="6_eko2p"]
-[ext_resource type="AudioStream" uid="uid://cw7rbonlfj4bs" path="res://Sound/successwinintro.mp3" id="7_1u4wq"]
 [ext_resource type="Texture2D" uid="uid://bs36g5a1nk6vq" path="res://Art/NewBrain.png" id="7_8yud8"]
 [ext_resource type="AudioStream" uid="uid://86sheedxdjt3" path="res://Sound/brainHit.wav" id="7_y2qjd"]
 [ext_resource type="AudioStream" uid="uid://cae7vyrjjiux3" path="res://Sound/battllle.wav" id="9_l803j"]
@@ -357,9 +356,6 @@ offset_right = 187.0
 offset_bottom = 122.0
 mouse_filter = 2
 
-[node name="WinIntro" type="AudioStreamPlayer2D" parent="FadeToWin"]
-stream = ExtResource("7_1u4wq")
-
 [node name="FadetoWhite" type="AnimationPlayer" parent="FadeToWin"]
 libraries = {
 "": SubResource("AnimationLibrary_nt5id")
@@ -567,7 +563,7 @@ modulate = Color(1, 1, 1, 0)
 z_index = 100
 position = Vector2(15, -6)
 
-[connection signal="finished" from="FadeToWin/WinIntro" to="." method="_on_win_intro_finished"]
+[connection signal="animation_finished" from="FadeToWin/FadetoWhite" to="." method="_on_fadeto_white_animation_finished"]
 [connection signal="timeout" from="Camera2D/ResetCam" to="Camera2D" method="_on_reset_cam_timeout"]
 [connection signal="animation_looped" from="Brain/AnimatedSprite2D" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_animated_sprite_2d_animation_looped"]
 [connection signal="area_entered" from="Brain/AnimatedSprite2D/BrainCollision" to="Brain" method="_on_area_2d_area_entered"]

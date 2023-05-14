@@ -157,9 +157,9 @@ func _on_mob_spawn_timer_timeout():
 						add_child(mob)
 
 func _on_anger_enemy_raise_victory(vp):
+	victory_score += vp
 	if victory_score >= total_victory_score:
 		fade_to_win()
-	victory_score += vp
 
 func fade_to_win():
 	if not Global.win:
@@ -167,7 +167,6 @@ func fade_to_win():
 		get_tree().call_group("card","remove_card_effect")
 		$FadeToWin.show()
 		$FadeToWin/FadetoWhite.play("fade to white")
-		$FadeToWin/WinIntro.play()
 
-func _on_win_intro_finished():
+func _on_fadeto_white_animation_finished(anim_name):
 	get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
