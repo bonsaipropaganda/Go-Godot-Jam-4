@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ksy7sqcniy3"
+path="res://.godot/imported/battllle BIG BOSS (1).wav-60046da55a0bf99d154a7d0f9f5df17a.sample"
+
+[deps]
+
+source_file="res://Sound/battllle BIG BOSS (1).wav"
+dest_files=["res://.godot/imported/battllle BIG BOSS (1).wav-60046da55a0bf99d154a7d0f9f5df17a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

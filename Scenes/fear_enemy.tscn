@@ -188,6 +188,7 @@ speed = 10
 max_health = 100
 health_height = 2
 health_loss_speed = 2
+victory_multiplier = 6
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_u6m1n")

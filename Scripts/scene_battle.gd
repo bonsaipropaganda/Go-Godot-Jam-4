@@ -1,4 +1,6 @@
 extends Node2D
+@export var boss_name: String
+
 @export var anger_mob: PackedScene
 @export var fear_mob: PackedScene
 @export var anxiety_mob: PackedScene
@@ -56,9 +58,9 @@ func _on_mob_spawn_timer_timeout():
 		var spawn_percent = (randi() % 100 + 1)
 		if  spawn_percent <= anger_percent:
 			mob_to_spawn = "anger_mob"
-		elif spawn_percent <= fear_percent:
+		elif spawn_percent <= fear_percent + anger_percent:
 			mob_to_spawn = "fear_mob"
-		elif spawn_percent <= anxiety_percent:
+		elif spawn_percent <= anxiety_percent + fear_percent + anger_percent:
 			mob_to_spawn = "anxiety_mob"
 		else:
 			mob_to_spawn = "grief_mob"
@@ -90,48 +92,50 @@ func _on_mob_spawn_timer_timeout():
 						print("fail")
 					
 			"fear_mob":
-				for n in (Global.more_fear + 1):
-					var mob = PackedScene
-					mob = fear_mob.instantiate()
-					
-					# Choose a random location on Path2D.
-					var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
-					mob_spawn_location.progress_ratio = randf()
-
-					# Set the mob's position to a random location on the spawn path
-					mob.position = mob_spawn_location.position
-
-					# Choose the velocity for the mob.
-					mob.velocity = mob.global_position.direction_to(brain.global_position)
-					print("spawn " + mob_to_spawn + " " + str(n))
-					
-					# Connect the mob's victory signal
-					mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+				for n in fear_rate:
+					if roundi(randf()):
+						var mob = PackedScene
+						mob = fear_mob.instantiate()
 						
-					# Spawn the mob by adding it to the Main scene.
-					add_child(mob)
+						# Choose a random location on Path2D.
+						var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+						mob_spawn_location.progress_ratio = randf()
+
+						# Set the mob's position to a random location on the spawn path
+						mob.position = mob_spawn_location.position
+
+						# Choose the velocity for the mob.
+						mob.velocity = mob.global_position.direction_to(brain.global_position)
+						print("spawn " + mob_to_spawn + " " + str(n))
+						
+						# Connect the mob's victory signal
+						mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+							
+						# Spawn the mob by adding it to the Main scene.
+						add_child(mob)
 					
 			"anxiety_mob":
-				for n in (Global.more_fear + 1):
-					var mob = PackedScene
-					mob = anxiety_mob.instantiate()
-					
-					# Choose a random location on Path2D.
-					var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
-					mob_spawn_location.progress_ratio = randf()
+				for n in anxiety_rate:
+					if roundi(randf()):
+						var mob = PackedScene
+						mob = anxiety_mob.instantiate()
+						
+						# Choose a random location on Path2D.
+						var mob_spawn_location = get_node("MobPath/MobSpawnLocation")
+						mob_spawn_location.progress_ratio = randf()
 
-					# Set the mob's position to a random location on the spawn path
-					mob.position = mob_spawn_location.position
+						# Set the mob's position to a random location on the spawn path
+						mob.position = mob_spawn_location.position
 
-					# Choose the velocity for the mob.
-					mob.velocity = mob.global_position.direction_to(brain.global_position)
-					print("spawn " + mob_to_spawn + " " + str(n))
-					
-					# Connect the mob's victory signal
-					mob.raise_victory.connect(_on_anger_enemy_raise_victory)
-					
-					# Spawn the mob by adding it to the Main scene.
-					add_child(mob)
+						# Choose the velocity for the mob.
+						mob.velocity = mob.global_position.direction_to(brain.global_position)
+						print("spawn " + mob_to_spawn + " " + str(n))
+						
+						# Connect the mob's victory signal
+						mob.raise_victory.connect(_on_anger_enemy_raise_victory)
+						
+						# Spawn the mob by adding it to the Main scene.
+						add_child(mob)
 					
 			"grief_mob":
 				for n in grief_rate:
@@ -164,6 +168,17 @@ func _on_anger_enemy_raise_victory(vp):
 func fade_to_win():
 	if not Global.win:
 		Global.win = true
+		
+		match boss_name:
+			"Anger": Global.anger_defeated = true
+			"Fear": Global.fear_defeated = true
+			"Anxiety": 
+				Global.anxiety_defeated = true
+				get_tree().change_scene_to_file("res://Scenes/ending.tscn")
+			"Grief": Global.grief_defeated = true
+			
+		Global.door_level += 1
+		
 		get_tree().call_group("card","remove_card_effect")
 		$FadeToWin.show()
 		$FadeToWin/FadetoWhite.play("fade to white")

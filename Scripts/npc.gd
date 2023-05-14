@@ -8,6 +8,7 @@ signal walked_away
 @export var character_name: String
 @export var character_picture: PackedScene
 @export var character_sprite: PackedScene
+@export var boss_fight : PackedScene
 
 #@export var battle_scene: PackedScene
 
@@ -21,6 +22,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player_present and Input.is_action_just_pressed("ui_accept"):
 		npc_speech.emit(dialog_array,character_name,character_picture)
+		Global.boss_fight = boss_fight
+		Global.last_talked_to = character_name
 
 
 func _on_player_check_body_entered(body: Node2D) -> void:

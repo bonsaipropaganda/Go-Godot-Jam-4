@@ -1,14 +1,27 @@
 extends Node2D
 
 @export var static_path : PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	#DELETE BOSSES IF BEATEN
+	if Global.anger_defeated:
+		$"Anger Boss".queue_free()
+	if Global.grief_defeated:
+		$"Grief Boss".queue_free()
+	if Global.fear_defeated:
+		$"Fear Boss".queue_free()
+		
+	if Global.grief_defeated and Global.fear_defeated:
+		$BackgroundMusic.stop()
+		$FinalBackground.play()
+	if Global.anxiety_defeated:
+		pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.go_to_battle:
+	if Global.go_to_battle and Global.last_talked_to != "HoodGuy":
 		Global.player_position = $Player.position
 		Global.go_to_battle = false
 		
@@ -31,7 +44,10 @@ func _process(delta):
 		$TransitionTimer.start()
 		$TransitionMusic.play()
 		
+	elif Global.last_talked_to == "HoodGuy":
+		Global.go_to_battle = false
+		$Door4.open = true
 
 
 func _on_transition_timer_timeout():
-	get_tree().change_scene_to_file("res://Scenes/scene_battle.tscn")
+	get_tree().change_scene_to_packed(Global.boss_fight)

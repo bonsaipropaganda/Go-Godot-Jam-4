@@ -3,6 +3,7 @@ extends Area2D
 @export var max_health : int
 @export var health_height : int
 @export var health_loss_speed : int
+@export var victory_multiplier: int
 
 @onready var health = max_health
 @onready var health_bar_size = health/5
@@ -15,6 +16,9 @@ var velocity = Vector2.ZERO
 var mouse_in = false
 var mouse_held = false
 var dead = false
+
+#SIGNAL TO RAISE VICTORY BAR UPON DEATH
+signal raise_victory
 
 
 # Called when the node enters the scene tree for the first time.
@@ -38,6 +42,7 @@ func _process(delta):
 		if health <= 0 and not $Death.playing:
 			$Damage.stop()
 			$Death.play()
+			emit_signal("raise_victory",victory_multiplier)
 			dead = true
 			hide()
 

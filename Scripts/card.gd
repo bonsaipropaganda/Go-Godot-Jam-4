@@ -28,7 +28,7 @@ func _ready():
 		"more_speed":
 			description = "Adds 25% more speed to enemies"
 		"more_anger":
-			description = "Increases anger output by 50%"
+			description = "Increases enemy output by 25%"
 
 	#SLIDE IN NEW CARD FROM DECK
 	var start_position = position

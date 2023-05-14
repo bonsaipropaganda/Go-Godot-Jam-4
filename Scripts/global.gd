@@ -10,6 +10,17 @@ var dead = false
 var show_debug_ui = false
 var camera
 
+var boss_fight : PackedScene
+
+var door_level = 0
+
+var last_talked_to = ""
+
+var anger_defeated = false
+var fear_defeated = false
+var grief_defeated = false
+var anxiety_defeated = false
+
 #DECK STUFF
 #VARIABLES
 var hand_size = 4
