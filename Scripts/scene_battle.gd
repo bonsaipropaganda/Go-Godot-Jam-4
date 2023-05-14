@@ -6,6 +6,7 @@ extends Node2D
 @export var anger_rate: int
 @export var total_victory_score: int
 @export var victory_multiplier: int
+@export var static_path : PackedScene
 
 @onready var brain = get_node("Brain")
 @onready var victory_score = 0
@@ -14,6 +15,24 @@ signal killed_enemy
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#ADD STATIC EFFECT
+	var static_effect = static_path.instantiate()
+	$Camera2D.add_child(static_effect)
+	
+	var static_tween = get_tree().create_tween()
+	#tween.set_trans(Tween.TRANS_EXPO)
+	static_tween.tween_property(static_effect, "scale", Vector2(0.5,0.5), 0.5)
+	static_tween.tween_property(static_effect, "modulate:a", 0, 0.2)
+	static_tween.tween_callback(static_effect.queue_free)
+	
+	var tween = get_tree().create_tween()
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_property($Camera2D, "zoom", Vector2(4,4), 0.5)
+	
+	var tween2 = get_tree().create_tween()
+	tween2.set_trans(Tween.TRANS_ELASTIC)
+	tween2.tween_property($Camera2D, "rotation", 0, 0.5)
+	
 	$mob_spawn_timer.start()
 	Global.camera = $Camera2D
 

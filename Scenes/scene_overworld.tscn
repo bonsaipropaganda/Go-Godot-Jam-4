@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=27 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6lvoe"]
 [ext_resource type="Script" path="res://Scenes/scene_overworld.gd" id="1_b0n6f"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bjae6ta1egiv2" path="res://Art/sheet.png" id="2_irk28"]
 [ext_resource type="PackedScene" uid="uid://qrgxcyq2g6ss" path="res://Scenes/player.tscn" id="2_ivmms"]
 [ext_resource type="PackedScene" uid="uid://dgjovjn0cwivc" path="res://Scenes/dialog_box.tscn" id="2_xyfwa"]
+[ext_resource type="AudioStream" uid="uid://1molxxgeoacv" path="res://Sound/transition.wav" id="3_bswfn"]
 [ext_resource type="PackedScene" uid="uid://vxonjkl1uxu3" path="res://Scenes/door.tscn" id="4_frvsx"]
 [ext_resource type="Texture2D" uid="uid://dy3v06rijtio4" path="res://Art/floorstest1.png" id="5_bop28"]
 [ext_resource type="PackedScene" uid="uid://da6wtt163uf5f" path="res://Scenes/npc.tscn" id="5_stjdd"]
@@ -20,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://bciuy2whotcjp" path="res://Sound/MainOveworldMusic.wav" id="17_6r8rw"]
 [ext_resource type="PackedScene" uid="uid://bapep0437nh20" path="res://Scenes/headshots/hood_headshot.tscn" id="18_rdvrv"]
 [ext_resource type="PackedScene" uid="uid://cbniaaw7y8pnp" path="res://Scenes/headshots/hood_sprite.tscn" id="19_banp5"]
+[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="21_rhvqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4254,11 +4256,14 @@ sources/3 = SubResource("TileSetAtlasSource_q6gxh")
 
 [node name="Scene_Overworld" type="Node2D"]
 script = ExtResource("1_b0n6f")
+static_path = ExtResource("21_rhvqy")
 metadata/_edit_horizontal_guides_ = []
 
 [node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="TransitionMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_bswfn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -687.0
@@ -4279,6 +4284,9 @@ layer_0/tile_data = PackedInt32Array(-65530, 262147, 2, -65531, 262147, 2, -6553
 [node name="Player" parent="." instance=ExtResource("2_ivmms")]
 position = Vector2(2, -8)
 speed = 100
+
+[node name="Camera2D" parent="Player" index="2"]
+ignore_rotation = false
 
 [node name="Door" parent="." instance=ExtResource("4_frvsx")]
 position = Vector2(-123, -19)
