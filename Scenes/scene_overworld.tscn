@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bqen8n4nhjtv5"]
+[gd_scene load_steps=25 format=3 uid="uid://bqen8n4nhjtv5"]
 
 [ext_resource type="Script" path="res://Scripts/CanvasLayer.gd" id="1_6lvoe"]
 [ext_resource type="Script" path="res://Scenes/scene_overworld.gd" id="1_b0n6f"]
@@ -20,7 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://bciuy2whotcjp" path="res://Sound/MainOveworldMusic.wav" id="17_6r8rw"]
 [ext_resource type="PackedScene" uid="uid://bapep0437nh20" path="res://Scenes/headshots/hood_headshot.tscn" id="18_rdvrv"]
 [ext_resource type="PackedScene" uid="uid://cbniaaw7y8pnp" path="res://Scenes/headshots/hood_sprite.tscn" id="19_banp5"]
-[ext_resource type="PackedScene" uid="uid://2nqnih7u3krq" path="res://Scenes/static_video.tscn" id="21_rhvqy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kch08"]
 texture = ExtResource("1_hdaa8")
@@ -4344,9 +4343,6 @@ dialog_array = ["Oh hey, welcome to your brain. Dark place, huh? ", "It's cause 
 character_name = "Hood Guy"
 character_picture = ExtResource("18_rdvrv")
 character_sprite = ExtResource("19_banp5")
-
-[node name="Static_Video" parent="." instance=ExtResource("21_rhvqy")]
-position = Vector2(-24, -19)
 
 [connection signal="timeout" from="TransitionTimer" to="." method="_on_transition_timer_timeout"]
 [connection signal="npc_speech" from="Anger Boss" to="CanvasLayer" method="_on_npc_npc_speech"]
