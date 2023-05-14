@@ -28,7 +28,7 @@ func _on_mob_spawn_timer_timeout():
 	
 	var mob_to_spawn = ""
 
-	if (randi() % 100 + 1) <= anger_percent:
+	if (randi() % 2) == 0:
 		mob_to_spawn = "anger_mob"
 	else:
 		mob_to_spawn = "fear_mob"
@@ -55,7 +55,10 @@ func _on_mob_spawn_timer_timeout():
 					mob.raise_victory.connect(_on_anger_enemy_raise_victory)
 					
 					# Spawn the mob by adding it to the Main scene.
+					mob.hide_health_bar()
 					add_child(mob)
+					await get_tree().create_timer(12).timeout
+					mob.queue_free()
 				else:
 					print("fail")
 				
@@ -76,7 +79,11 @@ func _on_mob_spawn_timer_timeout():
 				print("spawn " + mob_to_spawn + " " + str(n))
 				
 				# Spawn the mob by adding it to the Main scene.
+				mob.hide_health_bar()
 				add_child(mob)
+				await get_tree().create_timer(12).timeout
+				mob.queue_free()
+				
 
 func _on_anger_enemy_raise_victory(vp):
 	victory_score += vp
