@@ -303,17 +303,19 @@ fear_mob = ExtResource("2_q6vyy")
 anger_percent = 80
 fear_percent = 20
 anger_rate = 3
-total_victory_score = 65
+total_victory_score = 10
 victory_multiplier = 5
 static_path = ExtResource("4_aqiwl")
 
 [node name="FadeOut" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 0)
 z_index = 100
 offset_left = -197.0
 offset_top = -117.0
 offset_right = 206.0
 offset_bottom = 126.0
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Back Background" type="ColorRect" parent="."]
@@ -517,3 +519,4 @@ position = Vector2(15, -6)
 [connection signal="finished" from="Brain/AnimatedSprite2D/BrainCollision/LoseContinue" to="Brain/AnimatedSprite2D/BrainCollision" method="_on_lose_continue_finished"]
 [connection signal="timeout" from="mob_spawn_timer" to="." method="_on_mob_spawn_timer_timeout"]
 [connection signal="pressed" from="TryAgain/Yes" to="TryAgain" method="_on_yes_pressed"]
+[connection signal="pressed" from="TryAgain/No" to="TryAgain" method="_on_no_pressed"]

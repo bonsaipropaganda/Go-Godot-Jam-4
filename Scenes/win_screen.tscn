@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqg4n20hgi25p"]
+
+[ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="1_mxgul"]
+[ext_resource type="PackedScene" uid="uid://ci7kcqcdce5ul" path="res://Scenes/player_deck.tscn" id="2_y3tk4"]
+
+[node name="win_screen" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Congratuations" type="Label" parent="."]
+offset_left = -72.0
+offset_top = -61.0
+offset_right = 72.0
+offset_bottom = -36.0
+theme_override_fonts/font = ExtResource("1_mxgul")
+theme_override_font_sizes/font_size = 14
+text = "Congratuations"
+
+[node name="Sub" type="Label" parent="."]
+offset_left = -103.0
+offset_top = -37.0
+offset_right = 103.0
+offset_bottom = -10.0
+theme_override_fonts/font = ExtResource("1_mxgul")
+theme_override_font_sizes/font_size = 8
+text = "Choose a card to remove from your deck:"
+
+[node name="Player_Deck" parent="." instance=ExtResource("2_y3tk4")]
+position = Vector2(-6, 19)

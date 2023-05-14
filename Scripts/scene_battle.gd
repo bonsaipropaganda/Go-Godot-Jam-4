@@ -99,6 +99,7 @@ func _on_mob_spawn_timer_timeout():
 
 func _on_anger_enemy_raise_victory(vp):
 	if victory_score >= total_victory_score:
-		print("WiN!")
+		Global.win = true
+		get_tree().change_scene_to_file("res://Scenes/win_screen.tscn")
 	
 	victory_score += vp
