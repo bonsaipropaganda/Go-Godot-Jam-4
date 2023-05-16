@@ -1,0 +1,140 @@
+[gd_scene load_steps=11 format=3 uid="uid://bckut0y28u63d"]
+
+[ext_resource type="Script" path="res://Scripts/dialog.gd" id="1_bfift"]
+[ext_resource type="FontFile" uid="uid://1tan0p4qpvfj" path="res://Art/Fonts/Kenney Pixel Square.ttf" id="2_j53il"]
+[ext_resource type="FontFile" uid="uid://5t0tqlgxv45u" path="res://Art/Fonts/Kenney Pixel.ttf" id="3_kba4x"]
+[ext_resource type="AudioStream" uid="uid://ipaeayybs3qr" path="res://Sound/type_noise.wav" id="4_myqry"]
+[ext_resource type="AudioStream" uid="uid://budrc8h5k3qtm" path="res://Sound/type_noise2.wav" id="5_6tiyu"]
+[ext_resource type="AudioStream" uid="uid://03bcc4d1o5rv" path="res://Sound/type_noise3.wav" id="6_478nt"]
+[ext_resource type="AudioStream" uid="uid://bbjhcs5lcpew0" path="res://Sound/progress.wav" id="7_a0uw3"]
+
+[sub_resource type="Animation" id="Animation_4tlml"]
+resource_name = "Floaty"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1175, -0.25, 0, 0.25, 0, 1175, -0.25, 0, 0.25, 0, 1175, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(185, -0.25, 0, 0.25, 0, 190, -0.25, 0, 0.25, 0, 184, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4, 1)
+}
+
+[sub_resource type="Animation" id="Animation_yo5g4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1175, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(208, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_byycq"]
+_data = {
+"Floaty": SubResource("Animation_4tlml"),
+"RESET": SubResource("Animation_yo5g4")
+}
+
+[node name="DialogBox" type="ColorRect"]
+offset_top = 470.0
+offset_right = 1278.0
+offset_bottom = 720.0
+script = ExtResource("1_bfift")
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = -1.0
+offset_right = 523.0
+offset_bottom = 85.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_j53il")
+theme_override_font_sizes/normal_font_size = 46
+text = "Name goes here"
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 76.0
+offset_right = 1169.0
+offset_bottom = 250.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_kba4x")
+theme_override_font_sizes/normal_font_size = 60
+text = "Text goes here. Hello I will kill yor brain. hehe. AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHHHHHHHHH!!!"
+scroll_active = false
+
+[node name="Indicator" type="Polygon2D" parent="."]
+position = Vector2(1175, 208)
+scale = Vector2(1.5, 1.5)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(4, 7, 44, 7, 24, 33, 24, 33)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Indicator"]
+libraries = {
+"": SubResource("AnimationLibrary_byycq")
+}
+
+[node name="Type_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_myqry")
+
+[node name="Type_noise2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_6tiyu")
+
+[node name="Type_noise3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_478nt")
+
+[node name="progress_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_a0uw3")
