@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://vxonjkl1uxu3"]
+[gd_scene load_steps=7 format=3 uid="uid://vxonjkl1uxu3"]
 
 [ext_resource type="Texture2D" uid="uid://clt1eeoy0a5ma" path="res://Art/closed_door.png" id="1_oqrq6"]
 [ext_resource type="Script" path="res://Scripts/door.gd" id="1_pqqwr"]
@@ -26,6 +26,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7h6d"]
 size = Vector2(22, 33)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4r4xe"]
+size = Vector2(9, 5)
+
 [node name="Door" type="StaticBody2D"]
 script = ExtResource("1_pqqwr")
 
@@ -37,3 +40,11 @@ animation = &"Closed"
 visible = false
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_n7h6d")
+
+[node name="CollisionArchway" type="CollisionShape2D" parent="."]
+position = Vector2(11.5, -14)
+shape = SubResource("RectangleShape2D_4r4xe")
+
+[node name="CollisionArchway2" type="CollisionShape2D" parent="."]
+position = Vector2(12, 14)
+shape = SubResource("RectangleShape2D_4r4xe")
